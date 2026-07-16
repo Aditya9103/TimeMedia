@@ -7,10 +7,15 @@ import ChiefGuestsCarousel from '../components/home/ChiefGuestsCarousel';
 import BrandDivider from '../components/home/BrandDivider';
 import TestimonialSection from '../components/home/TestimonialSection';
 import UpcomingEventsSection from '../components/home/UpcomingEventsSection';
+import SEO from '../components/common/SEO';
 
 const AboutPage = () => {
   return (
-    <PageContainer className="flex flex-col w-full overflow-hidden">
+    <PageContainer as="main" className="flex flex-col w-full overflow-hidden">
+      <SEO 
+        title="About Us"
+        description="Learn about Prime Time Research Media, our vision, mission, and how we empower brands through market research, PR, and prestigious awards."
+      />
       <AboutSummary />
       <StatsSection />
       <ServicesMarquee />

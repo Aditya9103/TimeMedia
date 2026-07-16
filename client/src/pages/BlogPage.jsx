@@ -5,6 +5,7 @@ import PageContainer from '../components/layout/PageContainer';
 import BlogSidebar from '../components/blog/BlogSidebar';
 import { useGetBlogsQuery } from '../store/apiSlice';
 import UpcomingEventsSection from '../components/home/UpcomingEventsSection';
+import SEO from '../components/common/SEO';
 
 const BlogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -29,8 +30,11 @@ const BlogPage = () => {
   const currentPage = blogResponse?.currentPage || 1;
 
   return (
-
-    <div className="bg-slate-50 min-h-screen py-12">
+    <main className="bg-slate-50 min-h-screen py-12">
+      <SEO 
+        title="Our Blog"
+        description="Read the latest news, insights, and updates from Prime Time Research Media regarding market trends, PR, and industry awards."
+      />
       <PageContainer>
 
         {/* Page Header */}
@@ -156,7 +160,7 @@ const BlogPage = () => {
         </div>
       </PageContainer>
       <UpcomingEventsSection />
-    </div>
+    </main>
 
   );
 };

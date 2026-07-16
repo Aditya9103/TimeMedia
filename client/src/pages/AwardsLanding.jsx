@@ -2,7 +2,7 @@ import React from 'react';
 import { useGetAwardCategoriesQuery, useGetAwardEventsQuery } from '../store/apiSlice';
 import PageContainer from '../components/layout/PageContainer';
 import { Link, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/common/SEO';
 import { Award, ChevronRight, Calendar, MapPin } from 'lucide-react';
 
 const AwardsLanding = () => {
@@ -25,9 +25,34 @@ const AwardsLanding = () => {
 
   // If a specific category is selected, show its events
   if (categorySlug && currentCat) {
+    // Generate Event Schema for all events in this category
+    const eventSchemas = events.map(ev => ({
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": ev.title,
+      "startDate": ev.eventDate ? new Date(ev.eventDate).toISOString() : undefined,
+      "location": {
+        "@type": "Place",
+        "name": ev.venue || "TBA",
+        "address": ev.venue || "TBA"
+      },
+      "image": ev.heroImage?.url ? ev.heroImage.url : currentCat.bannerImage ? `https://timemedia.in${currentCat.bannerImage}` : "https://timemedia.in/og-image.jpg",
+      "description": `Join the prestigious ${ev.title} hosted by Prime Time Research Media.`,
+      "organizer": {
+        "@type": "Organization",
+        "name": "Prime Time Research Media",
+        "url": "https://timemedia.in"
+      }
+    }));
+
     return (
-      <div className="bg-slate-50 min-h-screen py-16">
-        <Helmet><title>{currentCat.name} | Prime Time Media</title></Helmet>
+      <main className="bg-slate-50 min-h-screen py-16">
+        <SEO 
+          title={`${currentCat.name} | Award Summits`}
+          description={currentCat.description ? currentCat.description.substring(0, 150) + "..." : "Explore prestigious award summits, conferences, and recognition events hosted by Prime Time Research Media."}
+          image={currentCat.bannerImage ? `https://timemedia.in${currentCat.bannerImage}` : undefined}
+          schema={eventSchemas.length > 0 ? eventSchemas : undefined}
+        />
         
         <PageContainer>
           <div className="text-center mb-16">
@@ -44,7 +69,7 @@ const AwardsLanding = () => {
               >
                 <div className="h-48 bg-slate-200 overflow-hidden relative">
                   {ev.heroImage?.url ? (
-                    <img src={ev.heroImage.url} alt={ev.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <img src={ev.heroImage.url} alt={ev.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center bg-slate-800 text-white opacity-80">
                       <Award size={48} className="text-[#15b7b9]" />
@@ -77,14 +102,17 @@ const AwardsLanding = () => {
             )}
           </div>
         </PageContainer>
-      </div>
+      </main>
     );
   }
 
   // Otherwise, show all categories
   return (
-    <div className="bg-slate-50 min-h-screen py-16">
-      <Helmet><title>Awards & Recognitions | Prime Time Media</title></Helmet>
+    <main className="bg-slate-50 min-h-screen py-16">
+      <SEO 
+        title="Awards & Recognitions | Prime Time Media"
+        description="Celebrating excellence and recognizing pioneers across industries through our prestigious national and international award programs."
+      />
       
       <PageContainer>
         <div className="text-center mb-16">
@@ -112,7 +140,7 @@ const AwardsLanding = () => {
           ))}
         </div>
       </PageContainer>
-    </div>
+    </main>
   );
 };
 

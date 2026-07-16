@@ -2,7 +2,7 @@ import React from 'react';
 
 const HeroVideo = () => {
   return (
-    <div className="w-full">
+    <section className="w-full">
       <div className="relative w-full h-[90vh] md:h-[105vh] overflow-hidden">
         {/* Video Background */}
         <iframe
@@ -13,7 +13,7 @@ const HeroVideo = () => {
           frameBorder="0"
         ></iframe>
       </div>
-    </div>
+    </section>
   );
 };
 

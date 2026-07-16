@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Disallow access to admin routes
+Disallow: /admin/
+Disallow: /admin/*
+
+# Disallow access to sensitive API paths if any
+Disallow: /api/
+
+Sitemap: https://timemedia.in/sitemap.xml

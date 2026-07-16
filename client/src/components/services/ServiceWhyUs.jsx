@@ -15,6 +15,7 @@ export default function ServiceWhyUs({ whyItMatters, whyChooseUs, extraSections 
               <img 
                 src={whyChooseUs.image} 
                 alt="Why Choose Us" 
+                loading="lazy"
                 className="w-full h-auto rounded-xl object-contain max-h-[400px]"
               />
             </div>

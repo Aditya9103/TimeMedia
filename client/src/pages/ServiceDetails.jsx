@@ -9,6 +9,7 @@ import ServiceMiddleImage from '../components/services/ServiceMiddleImage';
 import ServiceSectors from '../components/services/ServiceSectors';
 import RelatedServices from '../components/services/RelatedServices';
 import UpcomingEventsSection from '../components/home/UpcomingEventsSection';
+import SEO from '../components/common/SEO';
 
 export default function ServiceDetails() {
   const { serviceId } = useParams();
@@ -40,8 +41,32 @@ export default function ServiceDetails() {
     return <Navigate to="/services/market-research" replace />;
   }
 
+  if (!data) {
+    return <div className="min-h-screen pt-32 text-center text-slate-500">Service not found.</div>;
+  }
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": data.title,
+    "name": data.hero.title,
+    "description": data.hero.description.substring(0, 200) + "...",
+    "provider": {
+      "@type": "Organization",
+      "name": "Prime Time Research Media",
+      "url": "https://timemedia.in"
+    },
+    "image": data.hero.image ? `https://timemedia.in${data.hero.image}` : "https://timemedia.in/og-image.jpg"
+  };
+
   return (
-    <PageContainer className="min-h-screen  font-sans">
+    <PageContainer as="main" className="min-h-screen  font-sans">
+      <SEO 
+        title={data.hero.title}
+        description={data.hero.description.substring(0, 150) + "..."}
+        image={data.hero.image ? `https://timemedia.in${data.hero.image}` : undefined}
+        schema={serviceSchema}
+      />
       {/* Section 1: Hero */}
       <ServiceHero data={data.hero} />
 

@@ -86,7 +86,7 @@ const BlogSidebar = () => {
               <div key={post._id} className="flex gap-4 items-start group">
                 <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-slate-100">
                   {post.image && (
-                    <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                    <img src={post.image} alt={post.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                   )}
                 </div>
                 <div>

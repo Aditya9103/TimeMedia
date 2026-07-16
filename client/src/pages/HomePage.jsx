@@ -14,10 +14,15 @@ import ClientLogosStrip from '../components/home/ClientLogosStrip';
 import AboutSummary from '../components/home/AboutSummary';
 import ChiefGuestsCarousel from '../components/home/ChiefGuestsCarousel';
 import BrandDivider from '../components/home/BrandDivider';
+import SEO from '../components/common/SEO';
 
 const HomePage = () => {
   return (
-    <>
+    <main>
+      <SEO 
+        title="Prime Time Research Media"
+        description="Prime Time Research Media provides elite market research, public relations, business consultancy, and hosts prestigious national and international award summits in India."
+      />
       <HeroVideo />
       <PageContainer className="flex flex-col w-full overflow-hidden">
 
@@ -35,7 +40,7 @@ const HomePage = () => {
         <LatestNewsSection />
         <UpcomingEventsSection />
       </PageContainer>
-    </>
+    </main>
   );
 };
 

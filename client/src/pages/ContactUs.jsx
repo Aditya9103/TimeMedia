@@ -4,6 +4,7 @@ import { MapPin, Phone, Smartphone, ChevronRight } from 'lucide-react';
 import ContactForm from '../components/common/ContactForm';
 import UpcomingEventsSection from '../components/home/UpcomingEventsSection';
 import PageContainer from '../components/layout/PageContainer';
+import SEO from '../components/common/SEO';
 
 const FacebookIcon = () => <svg fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" width="24" height="24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>;
 const YoutubeIcon = () => <svg fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" width="24" height="24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>;
@@ -14,13 +15,17 @@ const WhatsappIcon = () => <svg fill="none" stroke="currentColor" strokeWidth="2
 
 const ContactUs = () => {
     return (
-        <div className="flex flex-col w-full min-h-screen bg-gray-50 pt-5">
+        <main className="flex flex-col w-full min-h-screen bg-gray-50 pt-5">
+            <SEO 
+                title="Contact Us"
+                description="Get in touch with Prime Time Research Media. Contact our team for PR, market research, and business consultancy services."
+            />
             <PageContainer>
                 {/* Header Area */}
-                <div className="py-8 text-center mb-8">
+                <header className="py-8 text-center mb-8">
                     <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">Contact Us</h1>
                     <h2 className="text-2xl md:text-3xl font-bold text-slate-800">Prime Time Research Media Pvt Ltd</h2>
-                </div>
+                </header>
 
                 {/* Map & Info Card */}
                 <div className="mb-16">
@@ -67,32 +72,32 @@ const ContactUs = () => {
                                         <div className="bg-teal-400 p-2 rounded-lg mt-1">
                                             <MapPin className="text-white w-5 h-5 flex-shrink-0" />
                                         </div>
-                                        <span className="text-lg text-gray-800 leading-relaxed">
+                                        <address className="text-lg text-gray-800 leading-relaxed not-italic">
                                             C-31, Nawada Housing Complex, Shivaji Marg, New Delhi , 110059
-                                        </span>
+                                        </address>
                                     </StaggerItem>
 
 
                                     {/* Social Icons */}
                                     <StaggerItem className='flex flex-col gap-2'>
                                         <h4 className=" font-bold text-xl mb-6">Connect With Us</h4>
-                                        <div className="flex gap-4 mb-8">
-                                            <a href="https://www.facebook.com/primetimeresearch" className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+                                        <nav aria-label="Social Media" className="flex gap-4 mb-8">
+                                            <a href="https://www.facebook.com/primetimeresearch" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                                                 <FacebookIcon />
                                             </a>
-                                            <a href="https://www.youtube.com/@primetimermedia" className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+                                            <a href="https://www.youtube.com/@primetimermedia" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                                                 <YoutubeIcon />
                                             </a>
-                                            <a href="#" className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+                                            <a href="https://wa.me/911140159887" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                                                 <WhatsappIcon />
                                             </a>
-                                            <a href="https://www.instagram.com/primetimeresearchmedia/" className="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+                                            <a href="https://www.instagram.com/primetimeresearchmedia/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                                                 <InstagramIcon />
                                             </a>
-                                            <a href="https://www.linkedin.com/company/primetimeresearch-media/" className="w-12 h-12 rounded-full bg-blue-700 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+                                            <a href="https://www.linkedin.com/company/primetimeresearch-media/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-12 h-12 rounded-full bg-blue-700 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                                                 <LinkedinIcon />
                                             </a>
-                                        </div>
+                                        </nav>
                                     </StaggerItem>
 
                                 </StaggerContainer>
@@ -102,16 +107,18 @@ const ContactUs = () => {
 
                             {/* Right: Map Embed */}
                             <div className="w-full lg:w-1/2 min-h-[400px] bg-gray-100 rounded-xl overflow-hidden border border-gray-200">
-                                <iframe
-                                    src="https://maps.google.com/maps?q=Prime+Time+Research+Media+Private+Limited,New+Delhi&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                                    width="100%"
-                                    height="100%"
-                                    style={{ border: 0 }}
-                                    allowFullScreen=""
-                                    loading="lazy"
-                                    referrerPolicy="no-referrer-when-downgrade"
-                                    title="Prime Time Research Media Location Map"
-                                ></iframe>
+                                <map name="office-location">
+                                    <iframe
+                                        src="https://maps.google.com/maps?q=Prime%20Time%20Research%20Media%20Private%20Limited,%20New%20Delhi&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                                        width="100%"
+                                        height="100%"
+                                        style={{ border: 0, minHeight: '400px' }}
+                                        allowFullScreen=""
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                        title="Prime Time Research Media Location"
+                                    ></iframe>
+                                </map>
                             </div>
 
                         </div>
@@ -130,7 +137,7 @@ const ContactUs = () => {
             </PageContainer>
 
 
-        </div>
+        </main>
     );
 };
 

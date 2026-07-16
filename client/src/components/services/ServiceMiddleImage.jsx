@@ -10,6 +10,7 @@ const ServiceMiddleImage = ({ imageSrc }) => {
           <img 
             src={imageSrc} 
             alt="Service Feature" 
+            loading="lazy"
             className="w-full h-full object-cover"
           />
         </div>

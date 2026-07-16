@@ -5,6 +5,7 @@ import PageContainer from '../components/layout/PageContainer';
 import BlogSidebar from '../components/blog/BlogSidebar';
 import BlogComments from '../components/blog/BlogComments';
 import { useGetBlogByIdQuery } from '../store/apiSlice';
+import SEO from '../components/common/SEO';
 
 const BlogDetailsPage = () => {
   const { id } = useParams();
@@ -29,8 +30,35 @@ const BlogDetailsPage = () => {
     );
   }
 
+  const blogSchema = blog ? {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": blog.title,
+    "image": blog.image ? `https://timemedia.in${blog.image}` : "https://timemedia.in/og-image.jpg",
+    "author": {
+      "@type": "Person",
+      "name": blog.author || "Prime Time Research Media"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Prime Time Research Media",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://timemedia.in/favicon.svg"
+      }
+    },
+    "datePublished": new Date(blog.createdAt).toISOString()
+  } : undefined;
+
   return (
-    <div className="bg-slate-50 min-h-screen pb-20">
+    <main className="bg-slate-50 min-h-screen pb-20">
+      <SEO 
+        title={`${blog.title} | Blog`}
+        description={blog.excerpt || "Read this insightful article on Prime Time Research Media."}
+        image={blog.image ? `https://timemedia.in${blog.image}` : undefined}
+        type="article"
+        schema={blogSchema}
+      />
 
       {/* Breadcrumb Header */}
       <div className="bg-slate-900 py-12 md:py-16 px-4">
@@ -63,9 +91,10 @@ const BlogDetailsPage = () => {
 
               {/* Hero Image */}
               {blog.image && (
-                <div className="w-full h-[40vh] md:h-[60vh] bg-slate-100 relative">
-                  <img src={blog.image} alt={blog.title} className="w-full h-full object-cover" />
-                </div>
+                <figure className="w-full h-[40vh] md:h-[60vh] bg-slate-100 relative m-0">
+                  <img src={blog.image} alt={blog.title} loading="lazy" className="w-full h-full object-cover" />
+                  <figcaption className="sr-only">{blog.title}</figcaption>
+                </figure>
               )}
 
               <div className="p-8 md:p-12 lg:p-16">
@@ -76,10 +105,10 @@ const BlogDetailsPage = () => {
                     <User size={16} className="text-sky-500" />
                     By {blog.author || 'Admin'}
                   </div>
-                  <div className="flex items-center gap-2">
+                  <time dateTime={blog.createdAt} className="flex items-center gap-2">
                     <Calendar size={16} className="text-sky-500" />
                     {new Date(blog.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
-                  </div>
+                  </time>
                   <div className="flex items-center gap-2">
                     <Tag size={16} className="text-sky-500" />
                     {blog.category}
@@ -126,7 +155,7 @@ const BlogDetailsPage = () => {
 
         </div>
       </PageContainer>
-    </div>
+    </main>
   );
 };
 

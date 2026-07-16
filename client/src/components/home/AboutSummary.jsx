@@ -8,7 +8,7 @@ const AboutSummary = () => {
 
         {/* Left Side: Image */}
         <StaggerItem className="w-full md:w-1/2 relative min-h-[400px] flex items-center justify-center p-4">
-          <div className="relative w-full max-w-[500px] group">
+          <figure className="relative w-full max-w-[500px] group m-0">
             <img 
               src="/home/about1.png" 
               alt="About TimeMedia" 
@@ -18,7 +18,7 @@ const AboutSummary = () => {
                 e.target.src = "https://placehold.co/800x1000/transparent/333333?text=About+TimeMedia";
               }}
             />
-          </div>
+          </figure>
           
           {/* Decorative Dot Pattern */}
           <div className="absolute -bottom-4 -left-4 md:-bottom-8 md:-left-8 w-40 h-40 bg-[radial-gradient(circle_at_center,_#15b7b9_2px,_transparent_2px)] [background-size:16px_16px] -z-10 rounded-full opacity-60"></div>

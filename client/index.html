@@ -1,13 +1,113 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>client</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Fundamental SEO -->
+  <title>Prime Time Research Media | Leading PR, Awards & Market Research Agency in India</title>
+  <meta name="description"
+    content="Prime Time Research Media provides elite market research, public relations, business consultancy, and hosts prestigious national and international award summits." />
+  <meta name="keywords"
+    content="Market Research, Public Relations, Brand Management, Business Consultancy, Award Summits, Prime Time Media, India PR Agency" />
+  <meta name="author" content="Prime Time Research Media" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://timemedia.in/" />
+
+  <!-- Resource Hints for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://timemedia.in/" />
+  <meta property="og:title" content="Prime Time Research Media | Leading PR & Awards Agency" />
+  <meta property="og:description"
+    content="Elevate your brand with Prime Time Research Media's elite PR, market research, and prestigious business award summits." />
+  <meta property="og:image" content="https://timemedia.in/og-image.jpg" />
+  <meta property="og:site_name" content="Prime Time Research Media" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://timemedia.in/" />
+  <meta name="twitter:title" content="Prime Time Research Media | Leading PR & Awards Agency" />
+  <meta name="twitter:description"
+    content="Elevate your brand with Prime Time Research Media's elite PR, market research, and prestigious business award summits." />
+  <meta name="twitter:image" content="https://timemedia.in/og-image.jpg" />
+
+  <!-- SEO Structured Data for Contact, Address, and Social Media -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Prime Time Research Media",
+      "url": "https://timemedia.in/",
+      "logo": "https://timemedia.in/favicon.svg",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-11-40159887",
+          "contactType": "customer service",
+          "email": "info@timemedia.in",
+          "areaServed": "IN",
+          "availableLanguage": "en"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/primetimeresearch",
+        "https://twitter.com/primetimeres",
+        "https://www.youtube.com/@primetimermedia",
+        "https://www.instagram.com/primetimeresearchmedia/",
+        "https://www.linkedin.com/company/prime-time-research-media/"
+      ],
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "C-31, Nawada Housing Complex, Shivaji Marg",
+          "addressLocality": "New Delhi",
+          "postalCode": "110059",
+          "addressCountry": "IN"
+        }
+      ]
+    }
+  </script>
+
+  <!-- ✅ Meta Pixel Code (Correct Placement in HEAD) -->
+  <script>
+    // Only initialize Facebook Pixel on the production domain to prevent 422 errors in development and staging
+    if (window.location.hostname === 'timemedia.in' || window.location.hostname === 'www.timemedia.in') {
+      !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () {
+          n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '703397972608637'); // Using reference Pixel ID
+      fbq('track', 'PageView');
+    } else {
+      console.log("🛠️ Meta Pixel disabled on localhost to prevent 422 errors.");
+    }
+  </script>
+  <!-- ✅ End Meta Pixel Code -->
+</head>
+
+<body>
+  <!-- ✅ Meta Pixel Code (Body Part) -->
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=703397972608637&ev=PageView&noscript=1" />
+  </noscript>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>

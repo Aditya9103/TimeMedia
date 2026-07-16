@@ -19,37 +19,37 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
           {/* Useful Links */}
-          <div>
+          <nav aria-label="Useful Links">
             <h4 className="text-sky-400 font-bold text-xl mb-6">Useful Links</h4>
             <ul className="space-y-4">
               <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               <li><Link to="/terms-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
               <li><Link to="/refund-policy" className="hover:text-white transition-colors">Refund & Return Policy</Link></li>
             </ul>
-          </div>
+          </nav>
 
           {/* Site Links */}
-          <div>
+          <nav aria-label="Site Links">
             <h4 className="text-sky-400 font-bold text-xl mb-6">Site Links</h4>
             <ul className="space-y-4">
               <li><Link to="/our-patrons" className="hover:text-white transition-colors">Our Patrons</Link></li>
               <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
               <li><Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
             </ul>
-          </div>
+          </nav>
 
           {/* Awards */}
-          <div>
+          <nav aria-label="Awards Links">
             <h4 className="text-sky-400 font-bold text-xl mb-6">Awards</h4>
             <ul className="space-y-4">
               <li><Link to="/events/excellence-awards" className="hover:text-white transition-colors">Excellence Awards 2025</Link></li>
               <li><Link to="/events/healthcare-awards" className="hover:text-white transition-colors">Healthcare Awards 2025</Link></li>
               <li><Link to="/events/global-icon-awards" className="hover:text-white transition-colors">Global Icon Awards 2025</Link></li>
             </ul>
-          </div>
+          </nav>
 
           {/* Services */}
-          <div>
+          <nav aria-label="Services Links">
             <h4 className="text-sky-400 font-bold text-xl mb-6">Services</h4>
             <ul className="space-y-4">
               <li><Link to="/services/market-research" className="hover:text-white transition-colors">Market Research Ratings & Accreditations</Link></li>
@@ -57,7 +57,7 @@ const Footer = () => {
               <li><Link to="/services/consultancy" className="hover:text-white transition-colors">Business Consultancy Service</Link></li>
               <li><Link to="/services/brand-management" className="hover:text-white transition-colors">Brand-Reputation Manage</Link></li>
             </ul>
-          </div>
+          </nav>
         </div>
         {/* Bottom Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12">
@@ -80,19 +80,19 @@ const Footer = () => {
             <h4 className="text-white font-bold text-xl mb-6">Connect With Us</h4>
             {/* Social Icons */}
             <div className="flex gap-4 mb-8">
-              <a href="https://www.facebook.com/primetimeresearch" className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+              <a href="https://www.facebook.com/primetimeresearch" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                 <FacebookIcon />
               </a>
-              <a href="https://www.youtube.com/@primetimermedia" className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+              <a href="https://www.youtube.com/@primetimermedia" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                 <YoutubeIcon />
               </a>
-              <a href="#" className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+              <a href="https://wa.me/911140159887" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                 <WhatsappIcon />
               </a>
-              <a href="https://www.instagram.com/primetimeresearchmedia/" className="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+              <a href="https://www.instagram.com/primetimeresearchmedia/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                 <InstagramIcon />
               </a>
-              <a href="https://www.linkedin.com/company/primetimeresearch-media/" className="w-12 h-12 rounded-full bg-blue-700 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+              <a href="https://www.linkedin.com/company/primetimeresearch-media/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-12 h-12 rounded-full bg-blue-700 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                 <LinkedinIcon />
               </a>
             </div>

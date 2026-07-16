@@ -2,10 +2,15 @@ import React from 'react';
 import PageContainer from '../components/layout/PageContainer';
 import ChiefGuestsGrid from '../components/patrons/ChiefGuestsGrid';
 import UpcomingEventsSection from '../components/home/UpcomingEventsSection';
+import SEO from '../components/common/SEO';
 
 const OurPatronsPage = () => {
   return (
-    <div className="flex flex-col w-full  pt-10">
+    <main className="flex flex-col w-full pt-10">
+      <SEO 
+        title="Our Patrons & Chief Guests"
+        description="View the distinguished personalities, industry leaders, and chief guests who support Prime Time Research Media's pursuit of excellence."
+      />
       <PageContainer className="py-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Our Patrons & Chief Guests</h1>
@@ -19,7 +24,7 @@ const OurPatronsPage = () => {
         <UpcomingEventsSection />
 
       </PageContainer>
-    </div>
+    </main>
   );
 };
 
