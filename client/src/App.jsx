@@ -1,34 +1,35 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import OurPatronsPage from './pages/OurPatronsPage';
-import ContactUs from './pages/ContactUs';
 import FloatingChatMenu from './components/common/FloatingChatMenu';
 import ScrollToTop from './components/common/ScrollToTop';
-import ServiceDetails from './pages/ServiceDetails';
-import BlogPage from './pages/BlogPage';
-import BlogDetailsPage from './pages/BlogDetailsPage';
-import AwardsLanding from './pages/AwardsLanding';
-import AwardEventPage from './pages/AwardEventPage';
-
-// Admin Components
-import AdminLogin from './pages/admin/AdminLogin';
-import AdminSignup from './pages/admin/AdminSignup';
-import AdminLayout from './components/admin/AdminLayout';
-import AdminDashboard from './pages/admin/AdminDashboard';
 import ProtectedRoute from './components/admin/ProtectedRoute';
-import ContactSubmissions from './pages/admin/ContactSubmissions';
-import NominationSubmissions from './pages/admin/NominationSubmissions';
-import AdminBlogList from './pages/admin/AdminBlogList';
-import AdminWriteBlog from './pages/admin/AdminWriteBlog';
-import AdminSettings from './pages/admin/AdminSettings';
-import AdminAwardCategories from './pages/admin/AdminAwardCategories';
-import AdminAwardEvents from './pages/admin/AdminAwardEvents';
-import Nomination from './pages/Nomination';
 
+// Pages with Code Splitting (Lazy Loading)
+const HomePage = lazy(() => import('./pages/HomePage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const OurPatronsPage = lazy(() => import('./pages/OurPatronsPage'));
+const ContactUs = lazy(() => import('./pages/ContactUs'));
+const ServiceDetails = lazy(() => import('./pages/ServiceDetails'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogDetailsPage = lazy(() => import('./pages/BlogDetailsPage'));
+const AwardsLanding = lazy(() => import('./pages/AwardsLanding'));
+const AwardEventPage = lazy(() => import('./pages/AwardEventPage'));
+const Nomination = lazy(() => import('./pages/Nomination'));
+
+// Admin Pages (Lazy Loading)
+const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
+const AdminSignup = lazy(() => import('./pages/admin/AdminSignup'));
+const AdminLayout = lazy(() => import('./components/admin/AdminLayout'));
+const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
+const ContactSubmissions = lazy(() => import('./pages/admin/ContactSubmissions'));
+const NominationSubmissions = lazy(() => import('./pages/admin/NominationSubmissions'));
+const AdminBlogList = lazy(() => import('./pages/admin/AdminBlogList'));
+const AdminWriteBlog = lazy(() => import('./pages/admin/AdminWriteBlog'));
+const AdminSettings = lazy(() => import('./pages/admin/AdminSettings'));
+const AdminAwardCategories = lazy(() => import('./pages/admin/AdminAwardCategories'));
+const AdminAwardEvents = lazy(() => import('./pages/admin/AdminAwardEvents'));
 
 function App() {
   const location = useLocation();
@@ -39,39 +40,46 @@ function App() {
       {!location.pathname.startsWith("/admin") && <Navbar />}
       
       <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/our-patrons" element={<OurPatronsPage />} />
-          <Route path="/services" element={<Navigate to="/services/market-research" replace />} />
-          <Route path="/services/:serviceId" element={<ServiceDetails />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/awards" element={<AwardsLanding />} />
-          <Route path="/awards/:categorySlug" element={<AwardsLanding />} />
-          <Route path="/awards/:categorySlug/:eventSlug" element={<AwardEventPage />} />
-          <Route path="/nomination" element={<Nomination />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:id" element={<BlogDetailsPage />} />
-          
-          {/* Admin Routes */}
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/signup" element={<AdminSignup />} />
-          
-          {/* Protected Admin Dashboard */}
-          <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
-            <Route index element={<Navigate to="/admin/dashboard" replace />} />
-            <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="contact" element={<ContactSubmissions />} />
-            <Route path="nominations" element={<NominationSubmissions />} />
-            <Route path="award-categories" element={<AdminAwardCategories />} />
-            <Route path="award-events" element={<AdminAwardEvents />} />
-            <Route path="blogs" element={<AdminBlogList />} />
-            <Route path="blogs/new" element={<AdminWriteBlog />} />
-            <Route path="blogs/:id/edit" element={<AdminWriteBlog />} />
-            <Route path="settings" element={<AdminSettings />} />
-            {/* Add more nested admin routes here later */}
-          </Route>
-        </Routes>
+        <Suspense fallback={
+          <div className="min-h-[60vh] flex flex-col items-center justify-center text-sky-900">
+            <div className="w-12 h-12 border-4 border-gray-200 border-t-sky-500 rounded-full animate-spin mb-4" />
+            <p className="text-sm font-bold tracking-widest uppercase animate-pulse text-sky-600">Loading...</p>
+          </div>
+        }>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/our-patrons" element={<OurPatronsPage />} />
+            <Route path="/services" element={<Navigate to="/services/market-research" replace />} />
+            <Route path="/services/:serviceId" element={<ServiceDetails />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/awards" element={<AwardsLanding />} />
+            <Route path="/awards/:categorySlug" element={<AwardsLanding />} />
+            <Route path="/awards/:categorySlug/:eventSlug" element={<AwardEventPage />} />
+            <Route path="/nomination" element={<Nomination />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:id" element={<BlogDetailsPage />} />
+            
+            {/* Admin Routes */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/signup" element={<AdminSignup />} />
+            
+            {/* Protected Admin Dashboard */}
+            <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
+              <Route index element={<Navigate to="/admin/dashboard" replace />} />
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="contact" element={<ContactSubmissions />} />
+              <Route path="nominations" element={<NominationSubmissions />} />
+              <Route path="award-categories" element={<AdminAwardCategories />} />
+              <Route path="award-events" element={<AdminAwardEvents />} />
+              <Route path="blogs" element={<AdminBlogList />} />
+              <Route path="blogs/new" element={<AdminWriteBlog />} />
+              <Route path="blogs/:id/edit" element={<AdminWriteBlog />} />
+              <Route path="settings" element={<AdminSettings />} />
+              {/* Add more nested admin routes here later */}
+            </Route>
+          </Routes>
+        </Suspense>
       </main>
       {!location.pathname.startsWith("/admin") && <Footer />}
       {!location.pathname.startsWith("/admin") && <FloatingChatMenu />}
