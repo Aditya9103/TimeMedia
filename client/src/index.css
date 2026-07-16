@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-corporate-dark: #001f3f;
+  --color-corporate-gold: #FFD700;
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900 font-sans;
+  }
+}
+
+/* Force normal word breaking for all typography text */
+.prose,
+.prose * {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  hyphens: none !important;
+}
+
+/* Only allow aggressive breaking for elements that typically overflow */
+.prose a,
+.prose pre,
+.prose code {
+  overflow-wrap: break-word !important;
+}
