@@ -3,6 +3,7 @@ import { Award, Trash2, Loader2, Search, Download, Eye, Edit2 } from 'lucide-rea
 import { useGetNominationsQuery, useUpdateNominationStatusMutation, useUpdateNominationPaymentMutation, useDeleteNominationMutation } from '../../store/apiSlice';
 import NominationViewModal from '../../components/admin/NominationViewModal';
 import NominationEditModal from '../../components/admin/NominationEditModal';
+import config from '../../config/env';
 
 const STATUS_OPTIONS = [
   'ALL STATUSES',
@@ -232,7 +233,7 @@ export default function NominationSubmissions() {
                   <div className="flex items-center justify-end gap-2">
                     {n.fileUrl && (
                       <a
-                        href={n.fileUrl.startsWith('http') ? n.fileUrl : `http://localhost:5001${n.fileUrl}`}
+                        href={n.fileUrl.startsWith('http') ? n.fileUrl : `${config.apiUrl}${n.fileUrl}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-9 h-9 rounded-lg bg-sky-50 border border-sky-200 flex items-center justify-center text-sky-700 hover:bg-sky-100 transition-all shadow-sm"

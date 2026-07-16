@@ -1,6 +1,7 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import { FileText } from 'lucide-react';
+import config from '../../config/env';
 
 const DetailItem = ({ label, val, color = "text-white/90", isLink }) => {
   if (!val) return null;
@@ -155,7 +156,7 @@ export default function NominationViewModal({ nomination, onClose }) {
 
               {/* PDF Dossier */}
               {nomination.fileUrl && (
-                <a href={nomination.fileUrl.startsWith('http') ? nomination.fileUrl : `http://localhost:5001${nomination.fileUrl}`} target="_blank" rel="noopener noreferrer" className="block group">
+                <a href={nomination.fileUrl.startsWith('http') ? nomination.fileUrl : `${config.apiUrl}${nomination.fileUrl}`} target="_blank" rel="noopener noreferrer" className="block group">
                   <div className="bg-gradient-to-br from-[#d4af37]/20 to-[#020817] border border-[#d4af37]/30 p-5 rounded-2xl hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all duration-300 transform group-hover:-translate-y-1">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-xl bg-[#d4af37]/20 flex items-center justify-center text-[#d4af37] group-hover:scale-110 transition-transform">

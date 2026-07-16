@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useUpdateNominationMutation } from '../../store/apiSlice';
+import config from '../../config/env';
 
 export default function NominationEditModal({ nomination, onClose, onSave }) {
   const [formData, setFormData] = useState(null);
@@ -210,7 +211,7 @@ export default function NominationEditModal({ nomination, onClose, onSave }) {
                 {formData.fileUrl && (
                   <div className="mt-4 pt-4 border-t border-white/10">
                     <a
-                      href={formData.fileUrl.startsWith('http') ? formData.fileUrl : `http://localhost:5001${formData.fileUrl}`}
+                      href={formData.fileUrl.startsWith('http') ? formData.fileUrl : `${config.apiUrl}${formData.fileUrl}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 text-white/70 text-xs font-bold uppercase tracking-widest rounded-lg transition-colors border border-white/10"

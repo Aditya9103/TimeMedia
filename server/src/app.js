@@ -18,16 +18,37 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use('/uploads', express.static('uploads'));
 // Professional CORS Configuration
-const allowedOrigins = [
-  config.clientUrl,
-].filter(Boolean); // Remove undefined values
+const allowedOrigins = [...config.clientUrls].filter(Boolean);
 
 const corsOptions = {
-  origin: allowedOrigins,
-  credentials: true,
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like Postman or curl) ONLY in development
+    if (!origin && config.env !== 'production') {
+      return callback(null, true);
+    }
+    
+    // Check if the incoming origin is in our allowed list
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    // Reject the request if origin is not allowed
+    return callback(new Error('CORS policy violation: This origin is not permitted.'), false);
+  },
+  credentials: true, // Allow cookies and authorization headers
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
-  exposedHeaders: ['set-cookie']
+  allowedHeaders: [
+    'Content-Type', 
+    'Authorization', 
+    'X-Requested-With', 
+    'Accept',
+    'Origin',
+    'Access-Control-Request-Method',
+    'Access-Control-Request-Headers'
+  ],
+  exposedHeaders: ['set-cookie'],
+  optionsSuccessStatus: 200, // Provide support for legacy browsers (IE11, various SmartTVs)
+  maxAge: 86400, // Cache preflight requests for 24 hours to improve speed
 };
 
 app.use(cors(corsOptions));
