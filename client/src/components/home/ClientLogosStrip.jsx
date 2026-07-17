@@ -15,7 +15,7 @@ const ClientLogosStrip = () => {
   ];
 
   return (
-    <section className="py-12 bg-white overflow-hidden">
+    <section className="py-8 md:py-12 bg-white overflow-hidden">
       <style>
         {`
           @keyframes scroll-infinite {
@@ -35,7 +35,7 @@ const ClientLogosStrip = () => {
               <img
                 src={logo.url}
                 alt={logo.name}
-                className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 cursor-pointer hover:scale-105"
+                className="h-10 md:h-16 lg:h-20 w-auto object-contain transition-transform duration-300 cursor-pointer hover:scale-105"
               />
             </div>
           ))}
@@ -47,7 +47,7 @@ const ClientLogosStrip = () => {
               <img
                 src={logo.url}
                 alt={logo.name}
-                className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 cursor-pointer hover:scale-105"
+                className="h-10 md:h-16 lg:h-20 w-auto object-contain transition-transform duration-300 cursor-pointer hover:scale-105"
               />
             </div>
           ))}

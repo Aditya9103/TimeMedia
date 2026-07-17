@@ -10,14 +10,14 @@ const StatsSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-white border-y border-gray-100">
+    <section className="py-10 md:py-16 bg-white border-y border-gray-100">
       <div>
-        <StaggerContainer className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
+        <StaggerContainer className="grid grid-cols-2 md:flex md:flex-row justify-between items-center gap-8 md:gap-4 px-4">
           {stats.map((stat, index) => (
-            <StaggerItem key={index} className="flex items-center gap-4">
+            <StaggerItem key={index} className="flex flex-col md:flex-row items-center md:items-center justify-center gap-2 md:gap-4 text-center md:text-left">
               {/* Outline Number */}
               <div 
-                className="text-6xl md:text-7xl font-black tracking-tighter"
+                className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter"
                 style={{ 
                   WebkitTextStroke: '1px black', 
                   color: 'transparent' 

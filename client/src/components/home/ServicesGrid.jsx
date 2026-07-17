@@ -52,19 +52,19 @@ const ServicesGrid = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 md:py-20 bg-white">
       <div>
 
         {/* Header */}
         <div className="mb-12">
           <h4 className="text-sky-700 font-bold uppercase tracking-widest text-sm mb-4">What We Offer</h4>
-          <h2 className="text-3xl md:text-4xl font-black text-black mb-10">Provide Best Services</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-black mb-10">Provide Best Services</h2>
         </div>
 
         {/* Grid */}
         <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <StaggerItem key={index} className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300">
+            <StaggerItem key={index} className="bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-xl transition-shadow duration-300">
               <h3 className="text-2xl font-bold text-sky-700 mb-4">{service.title}</h3>
               <p className="text-gray-700 leading-relaxed mb-8 min-h-[80px]">
                 {service.description}

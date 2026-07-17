@@ -41,11 +41,11 @@ const UpcomingEventsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-white relative">
+    <section className="py-12 md:py-20 bg-white relative">
       <div className="mb-12">
         {/* Section Header */}
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-black">
+          <h2 className="text-3xl md:text-5xl font-black text-black">
             Upcoming Events
           </h2>
         </div>

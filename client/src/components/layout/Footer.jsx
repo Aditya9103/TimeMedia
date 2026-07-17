@@ -12,16 +12,16 @@ const WhatsappIcon = () => <svg fill="none" stroke="currentColor" strokeWidth="2
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-gray-300 pt-20 pb-10 border-t border-gray-800">
+    <footer className="bg-gray-800 text-gray-300 pt-12 pb-8 md:pt-20 md:pb-10 border-t border-gray-800">
       <PageContainer>
 
         {/* Top Section: Links Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
 
           {/* Useful Links */}
           <nav aria-label="Useful Links">
-            <h4 className="text-sky-400 font-bold text-xl mb-6">Useful Links</h4>
-            <ul className="space-y-4">
+            <h4 className="text-sky-400 font-bold text-lg md:text-xl mb-4 md:mb-6">Useful Links</h4>
+            <ul className="space-y-3 text-sm md:text-base">
               <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               <li><Link to="/terms-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
               <li><Link to="/refund-policy" className="hover:text-white transition-colors">Refund & Return Policy</Link></li>
@@ -30,8 +30,8 @@ const Footer = () => {
 
           {/* Site Links */}
           <nav aria-label="Site Links">
-            <h4 className="text-sky-400 font-bold text-xl mb-6">Site Links</h4>
-            <ul className="space-y-4">
+            <h4 className="text-sky-400 font-bold text-lg md:text-xl mb-4 md:mb-6">Site Links</h4>
+            <ul className="space-y-3 text-sm md:text-base">
               <li><Link to="/our-patrons" className="hover:text-white transition-colors">Our Patrons</Link></li>
               <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
               <li><Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
@@ -40,8 +40,8 @@ const Footer = () => {
 
           {/* Awards */}
           <nav aria-label="Awards Links">
-            <h4 className="text-sky-400 font-bold text-xl mb-6">Awards</h4>
-            <ul className="space-y-4">
+            <h4 className="text-sky-400 font-bold text-lg md:text-xl mb-4 md:mb-6">Awards</h4>
+            <ul className="space-y-3 text-sm md:text-base">
               <li><Link to="/events/excellence-awards" className="hover:text-white transition-colors">Excellence Awards 2025</Link></li>
               <li><Link to="/events/healthcare-awards" className="hover:text-white transition-colors">Healthcare Awards 2025</Link></li>
               <li><Link to="/events/global-icon-awards" className="hover:text-white transition-colors">Global Icon Awards 2025</Link></li>
@@ -50,8 +50,8 @@ const Footer = () => {
 
           {/* Services */}
           <nav aria-label="Services Links">
-            <h4 className="text-sky-400 font-bold text-xl mb-6">Services</h4>
-            <ul className="space-y-4">
+            <h4 className="text-sky-400 font-bold text-lg md:text-xl mb-4 md:mb-6">Services</h4>
+            <ul className="space-y-3 text-sm md:text-base">
               <li><Link to="/services/market-research" className="hover:text-white transition-colors">Market Research Ratings & Accreditations</Link></li>
               <li><Link to="/services/digital-marketing" className="hover:text-white transition-colors">Digital Marketing Web Development</Link></li>
               <li><Link to="/services/consultancy" className="hover:text-white transition-colors">Business Consultancy Service</Link></li>
@@ -60,26 +60,28 @@ const Footer = () => {
           </nav>
         </div>
         {/* Bottom Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12">
+        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-12">
 
           {/* Left: Tagline & Contact Form */}
-          <div className="w-full lg:w-1/2">
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-8">
+          <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-white mb-6 md:mb-8">
               Step up from <span className="text-sky-400">Local to Global</span>
             </h2>
 
-            <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700 max-w-lg">
-              <h4 className="text-white font-bold text-lg mb-4">Message with me</h4>
-              <ContactForm theme="dark" />
+            <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700 w-full max-w-lg">
+              <h4 className="text-white font-bold text-lg mb-4 text-left">Message with me</h4>
+              <div className="text-left">
+                <ContactForm theme="dark" />
+              </div>
             </div>
           </div>
 
           {/* Right: Social & Facebook Embed Placeholder */}
-          <div className="w-full lg:w-1/2 flex flex-col lg:items-end">
+          <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-end text-center lg:text-right">
 
-            <h4 className="text-white font-bold text-xl mb-6">Connect With Us</h4>
+            <h4 className="text-white font-bold text-lg md:text-xl mb-4 md:mb-6">Connect With Us</h4>
             {/* Social Icons */}
-            <div className="flex gap-4 mb-8">
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8">
               <a href="https://www.facebook.com/primetimeresearch" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                 <FacebookIcon />
               </a>
@@ -98,11 +100,12 @@ const Footer = () => {
             </div>
 
             {/* Facebook Page Widget */}
-            <div className="flex w-full max-w-sm bg-white rounded-lg overflow-hidden shadow-lg justify-center">
+            <div className="flex w-full max-w-[100%] sm:max-w-[340px] bg-white rounded-lg overflow-hidden shadow-lg justify-center mx-auto lg:ml-auto lg:mr-0">
               <iframe
-                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprimetimeresearch&tabs=timeline%2Cevents%2Cmessages&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&locale=en_US"
-                width="340"
-                height="500"
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprimetimeresearch&tabs=timeline%2Cevents%2Cmessages&width=340&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&locale=en_US"
+                width="100%"
+                height="400"
+                className="w-full max-w-[340px]"
                 style={{ border: 'none', overflow: 'hidden' }}
                 scrolling="no"
                 frameBorder="0"

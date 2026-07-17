@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { StaggerContainer, StaggerItem } from '../animations/StaggerFadeIn';
 
 const AboutSummary = () => {
+  const location = useLocation();
+  const isAboutPage = location.pathname === '/about';
+
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 md:py-20 bg-white">
       <StaggerContainer className="flex flex-col md:flex-row items-center gap-12">
 
         {/* Left Side: Image */}
@@ -27,14 +31,16 @@ const AboutSummary = () => {
         {/* Right Side: Text */}
         <StaggerItem className="w-full md:w-1/2">
           <h4 className="text-sky-700 font-bold uppercase tracking-widest text-sm mb-4">About Company</h4>
-          <h2 className="text-3xl md:text-4xl font-black text-black  mb-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-black  mb-6">
             Providing brilliant ideas For your business
           </h2>
           <p className="text-gray-700 text-lg leading-relaxed mb-6">
             Prime Time Research Media Private Limited is a premier insight driven media and marketing services company that is widely recognized for pioneering and innovative work for its clients. We are a one-stop solution for affordable and turn-key marketing and business services for domestic, multinational, government, non-government, corporate, established and new start-up businesses and services. We help in boosting your businesses and services and taking it to its zenith through bespoke brand management and strategy, business advisory, market research, marketing solutions, strategic public relations, media management, reputation management and design and communication solutions. Our strategic goal is to provide the best for our clients by amalgamating our expertise, exceptional thinking, innovative solutions and cutting-edge research methodology along with in-depth and creative expressions.</p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md">
-            Discover More
-          </button>
+          {!isAboutPage && (
+            <Link to="/about" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md mt-2">
+              Discover More
+            </Link>
+          )}
         </StaggerItem>
 
       </StaggerContainer>

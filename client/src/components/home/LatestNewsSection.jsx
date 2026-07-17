@@ -19,13 +19,13 @@ const LatestNewsSection = () => {
   }
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 md:py-20 bg-white">
       <div>
         
         {/* Section Header */}
         <div className="text-center mb-16">
           <h4 className="text-sky-700 font-bold uppercase tracking-widest text-sm mb-4">NEWS</h4>
-          <h2 className="text-3xl md:text-5xl font-black text-black">
+          <h2 className="text-2xl md:text-3xl lg:text-5xl font-black text-black">
             Latest News & Blog
           </h2>
         </div>
@@ -49,7 +49,7 @@ const LatestNewsSection = () => {
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold text-black mb-6 hover:text-sky-700 transition-colors">
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-6 hover:text-sky-700 transition-colors">
                 <Link to={`/blog/${article._id}`}>
                   {article.title}
                 </Link>

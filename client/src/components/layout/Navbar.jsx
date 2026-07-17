@@ -153,11 +153,11 @@ const Navbar = () => {
 
         {/* Mobile Menu Toggle Button */}
         <button
-          className="lg:hidden p-2 text-slate-800 hover:text-[#15b7b9] transition-colors focus:outline-none z-[60]"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className={`lg:hidden p-2 text-slate-800 hover:text-[#15b7b9] transition-opacity duration-300 focus:outline-none z-[40] ${mobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+          onClick={() => setMobileMenuOpen(true)}
           aria-label="Toggle Menu"
         >
-          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          <Menu size={28} />
         </button>
       </PageContainer>
 

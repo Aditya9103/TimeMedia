@@ -15,14 +15,14 @@ const ServicesMarquee = () => {
   ];
 
   return (
-    <section className="bg-white overflow-hidden py-10 border-y border-gray-300">
+    <section className="bg-white overflow-hidden py-6 md:py-10 border-y border-gray-300">
       <div className="flex overflow-hidden group">
         <div className="animate-marquee flex items-center w-max group-hover:[animation-play-state:paused]">
           {[...services, ...services, ...services, ...services].map((service, index) => (
-            <div key={index} className="px-12 flex-shrink-0">
+            <div key={index} className="px-6 md:px-12 flex-shrink-0">
               <Link
                 to={`/services/${service.slug}`}
-                className="text-lg md:text-xl font-bold text-black hover:text-sky-700 transition-colors whitespace-nowrap"
+                className="text-base md:text-xl font-bold text-black hover:text-sky-700 transition-colors whitespace-nowrap"
               >
                 {service.title}
               </Link>

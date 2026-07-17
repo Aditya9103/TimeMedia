@@ -92,9 +92,9 @@ const ChiefGuestsCarousel = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-50 relative overflow-hidden group">
+    <section className="py-10 md:py-16 bg-gray-50 relative overflow-hidden group">
       <div className="relative">
-        <h2 className="text-center align-center justify-center text-3xl md:text-4xl font-black text-black mb-12">
+        <h2 className="text-center align-center justify-center text-2xl md:text-3xl lg:text-4xl font-black text-black mb-12 px-4">
           Previous Chief Guests
         </h2>
 
@@ -124,9 +124,9 @@ const ChiefGuestsCarousel = () => {
           {guests.map((guest, index) => (
             <div
               key={index}
-              className="flex-shrink-0 flex flex-col items-center snap-center text-center cursor-pointer group/card w-full sm:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)]"
+              className="flex-shrink-0 flex flex-col items-center snap-center text-center cursor-pointer group/card w-[85vw] sm:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)]"
             >
-              <div className="relative w-52 h-52 md:w-64 md:h-64 mb-8 rounded-full overflow-hidden shadow-2xl transition-all duration-500 group-hover/card:shadow-cyan-500/30 group-hover/card:-translate-y-2 max-w-full mx-auto">
+              <div className="relative w-40 h-40 md:w-64 md:h-64 mb-8 rounded-full overflow-hidden shadow-2xl transition-all duration-500 group-hover/card:shadow-cyan-500/30 group-hover/card:-translate-y-2 max-w-full mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
                 <img
                   src={guest.image}

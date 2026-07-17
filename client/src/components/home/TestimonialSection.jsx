@@ -57,13 +57,13 @@ const TestimonialSection = () => {
   const extendedTestimonials = [...testimonials, testimonials[0]];
 
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <section className="py-12 md:py-20 bg-white overflow-hidden">
       <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
         {/* Left Half: Testimonial Text */}
         <div className="w-full lg:w-1/2">
           <h4 className="text-sky-700 font-bold uppercase tracking-widest text-sm mb-4">TESTIMONIAL</h4>
-          <h2 className="text-2xl md:text-4xl font-black text-black leading-tight mb-12">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-black leading-tight mb-12">
             What People Say About Us
           </h2>
 
@@ -107,7 +107,7 @@ const TestimonialSection = () => {
         </div>
 
         {/* Right Half: Image Slider */}
-        <div className="w-full lg:w-1/2 h-[300px] md:h-[400px] lg:h-[450px] shadow-2xl rounded-xl overflow-hidden">
+        <div className="w-full lg:w-1/2 h-[250px] sm:h-[300px] md:h-[400px] lg:h-[450px] shadow-2xl rounded-xl overflow-hidden">
           <div
             className={`flex h-full ${isTransitioning ? 'transition-transform duration-700 ease-in-out' : ''}`}
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}

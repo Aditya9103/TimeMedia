@@ -25,13 +25,13 @@ const HomeFaqSection = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 md:py-20 bg-white">
       <div className="flex flex-col lg:flex-row gap-12 items-center">
 
         {/* Left Side: FAQ Text & Accordion */}
         <div className="w-full lg:w-1/2">
           <h4 className="text-sky-700 font-bold uppercase tracking-widest text-sm mb-4">FAQ'S QUESTIONS</h4>
-          <h2 className="text-3xl md:text-4xl font-black text-black leading-tight mb-10">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-black leading-tight mb-10">
             Connecting customers To your brand
           </h2>
 
@@ -66,7 +66,7 @@ const HomeFaqSection = () => {
 
         {/* Right Side: Image */}
         <div className="w-full lg:w-1/2">
-          <div className="w-full h-auto min-h-[300px] md:h-full bg-gray-100 rounded-lg shadow-md border-4 border-white overflow-hidden relative">
+          <div className="w-full h-auto min-h-[200px] md:min-h-[300px] md:h-full bg-gray-100 rounded-lg shadow-md border-4 border-white overflow-hidden relative">
             <img
               src="/home/faq.jpg"
               alt="Event Image"
