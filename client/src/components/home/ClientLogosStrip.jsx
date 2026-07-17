@@ -16,35 +16,42 @@ const ClientLogosStrip = () => {
 
   return (
     <section className="py-12 bg-white overflow-hidden">
-      {/* Container masking the overflow */}
+      <style>
+        {`
+          @keyframes scroll-infinite {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+          }
+          .animate-scroll {
+            animation: scroll-infinite 30s linear infinite;
+          }
+        `}
+      </style>
       <div className="flex overflow-hidden group py-4 select-none">
-
-        {/* Track 1: Original Set */}
-        <div className="animate-marquee [animation-duration:20s] flex items-center min-w-full shrink-0 justify-around gap-16 group-hover:[animation-play-state:paused]">
-          {logos.map((logo, index) => (
-            <div key={`orig-${index}`} className="flex-shrink-0">
+        {/* Track 1 */}
+        <div className="animate-scroll flex items-center flex-shrink-0 w-max group-hover:[animation-play-state:paused]">
+          {[...logos, ...logos].map((logo, index) => (
+            <div key={`orig-${index}`} className="px-8 flex-shrink-0">
               <img
                 src={logo.url}
                 alt={logo.name}
-                className="h-16 md:h-20 object-contain transition-transform duration-300 cursor-pointer hover:scale-105"
+                className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 cursor-pointer hover:scale-105"
               />
             </div>
           ))}
         </div>
-
-        {/* Track 2: Exact Duplicate (creates the seamless illusion) */}
-        <div className="animate-marquee [animation-duration:20s] flex items-center min-w-full shrink-0 justify-around gap-16 group-hover:[animation-play-state:paused]" aria-hidden="true">
-          {logos.map((logo, index) => (
-            <div key={`dup-${index}`} className="flex-shrink-0">
+        {/* Track 2 */}
+        <div className="animate-scroll flex items-center flex-shrink-0 w-max group-hover:[animation-play-state:paused]" aria-hidden="true">
+          {[...logos, ...logos].map((logo, index) => (
+            <div key={`dup-${index}`} className="px-8 flex-shrink-0">
               <img
                 src={logo.url}
                 alt={logo.name}
-                className="h-16 md:h-20 object-contain transition-transform duration-300 cursor-pointer hover:scale-105"
+                className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 cursor-pointer hover:scale-105"
               />
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

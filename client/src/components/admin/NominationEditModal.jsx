@@ -197,13 +197,15 @@ export default function NominationEditModal({ nomination, onClose, onSave }) {
                     <textarea className={`${inputClass} min-h-[80px] resize-none`} name="message" value={formData.message || ""} onChange={handleChange} />
                   </div>
                   <div>
-                    <div className="flex justify-between items-center mb-1.5">
-                      <label className="text-[9px] font-black uppercase tracking-widest text-red-400/80 ml-1 block">Internal Admin Remarks</label>
-                      <label className="text-[9px] font-black uppercase tracking-widest text-indigo-400 ml-1 block border-b border-indigo-400">Valuation</label>
-                    </div>
-                    <div className="flex gap-2">
-                      <textarea className={`${inputClass} min-h-[80px] resize-none border-red-500/20 focus:border-red-500/50 flex-1`} name="adminRemark" value={formData.adminRemark || ""} onChange={handleChange} placeholder="Internal Notes..." />
-                      <input className={`${inputClass} w-32`} name="amount" value={formData.amount || ""} onChange={handleChange} placeholder="Fee / Amount" />
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-1.5">
+                      <div className="sm:col-span-2">
+                        <label className="text-[9px] font-black uppercase tracking-widest text-red-400/80 ml-1 mb-1.5 block">Internal Admin Remarks</label>
+                        <textarea className={`${inputClass} min-h-[80px] resize-none border-red-500/20 focus:border-red-500/50 w-full`} name="adminRemark" value={formData.adminRemark || ""} onChange={handleChange} placeholder="Internal Notes..." />
+                      </div>
+                      <div>
+                        <label className="text-[9px] font-black uppercase tracking-widest text-indigo-400 ml-1 mb-1.5 block">Valuation (₹)</label>
+                        <input className={inputClass} name="amount" value={formData.amount || ""} onChange={handleChange} placeholder="Amount" />
+                      </div>
                     </div>
                   </div>
                 </div>

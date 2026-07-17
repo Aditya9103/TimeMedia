@@ -16,7 +16,7 @@ const WhatsappIcon = () => <svg fill="none" stroke="currentColor" strokeWidth="2
 const ContactUs = () => {
     return (
         <main className="flex flex-col w-full min-h-screen bg-gray-50 pt-5">
-            <SEO 
+            <SEO
                 title="Contact Us"
                 description="Get in touch with Prime Time Research Media. Contact our team for PR, market research, and business consultancy services."
             />
@@ -88,10 +88,10 @@ const ContactUs = () => {
                                             <a href="https://www.youtube.com/@primetimermedia" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                                                 <YoutubeIcon />
                                             </a>
-                                            <a href="https://wa.me/911140159887" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+                                            <a href="https://wa.me/919810882769" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                                                 <WhatsappIcon />
                                             </a>
-                                            <a href="https://www.instagram.com/primetimeresearchmedia/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+                                            <a href="https://www.instagram.com/primetimemediain" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                                                 <InstagramIcon />
                                             </a>
                                             <a href="https://www.linkedin.com/company/primetimeresearch-media/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-12 h-12 rounded-full bg-blue-700 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">

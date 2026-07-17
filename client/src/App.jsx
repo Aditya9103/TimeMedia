@@ -17,6 +17,9 @@ const BlogDetailsPage = lazy(() => import('./pages/BlogDetailsPage'));
 const AwardsLanding = lazy(() => import('./pages/AwardsLanding'));
 const AwardEventPage = lazy(() => import('./pages/AwardEventPage'));
 const Nomination = lazy(() => import('./pages/Nomination'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsConditions = lazy(() => import('./pages/TermsConditions'));
+const RefundPolicy = lazy(() => import('./pages/RefundPolicy'));
 
 // Admin Pages (Lazy Loading)
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
@@ -59,6 +62,9 @@ function App() {
             <Route path="/nomination" element={<Nomination />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:id" element={<BlogDetailsPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-conditions" element={<TermsConditions />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
             
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />

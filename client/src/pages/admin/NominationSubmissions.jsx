@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Award, Trash2, Loader2, Search, Download, Eye, Edit2 } from 'lucide-react';
-import { useGetNominationsQuery, useUpdateNominationStatusMutation, useUpdateNominationPaymentMutation, useDeleteNominationMutation } from '../../store/apiSlice';
+import { useSelector } from 'react-redux';
+import { useGetNominationsQuery, useUpdateNominationStatusMutation, useUpdateNominationPaymentMutation, useDeleteNominationMutation, useUpdateNominationMutation } from '../../store/apiSlice';
 import NominationViewModal from '../../components/admin/NominationViewModal';
 import NominationEditModal from '../../components/admin/NominationEditModal';
 import config from '../../config/env';
@@ -15,6 +16,7 @@ const STATUS_OPTIONS = [
 ];
 
 export default function NominationSubmissions() {
+  const { adminInfo } = useSelector((state) => state.auth);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('ALL STATUSES');
   const [paymentFilter, setPaymentFilter] = useState('ALL PAYMENTS');
@@ -23,6 +25,10 @@ export default function NominationSubmissions() {
   // Modal states
   const [viewingNomination, setViewingNomination] = useState(null);
   const [editingNomination, setEditingNomination] = useState(null);
+
+  // Inline remark edit state
+  const [editingRemarkId, setEditingRemarkId] = useState(null);
+  const [remarkText, setRemarkText] = useState('');
 
   const queryParams = {
     search: searchTerm,
@@ -34,8 +40,21 @@ export default function NominationSubmissions() {
   const [updateStatus] = useUpdateNominationStatusMutation();
   const [updatePayment] = useUpdateNominationPaymentMutation();
   const [deleteNom] = useDeleteNominationMutation();
+  const [updateNomination] = useUpdateNominationMutation();
 
   const nominations = response?.data || [];
+
+  const handleSaveRemark = async (id) => {
+    try {
+      const adminName = adminInfo?.name || 'Admin';
+      await updateNomination({ id, data: { adminRemark: remarkText, adminName } }).unwrap();
+      setEditingRemarkId(null);
+      setRemarkText('');
+    } catch (err) {
+      console.error('Failed to update remark:', err);
+      alert('Failed to update remark');
+    }
+  };
 
   const handleStatusChange = async (id, newStatus) => {
     try {
@@ -91,8 +110,8 @@ export default function NominationSubmissions() {
 
   const renderNominationsTable = () => (
     <div className="relative group/table mt-6">
-      <div className="overflow-x-auto max-h-[75vh] rounded-2xl border border-slate-200 bg-white shadow-sm overflow-y-auto custom-scrollbar">
-        <table className="min-w-[1600px] w-full text-left border-separate border-spacing-0">
+      <div className="overflow-x-auto max-h-[75vh] rounded-2xl border border-slate-200 bg-white shadow-lg overflow-y-auto custom-scrollbar">
+        <table className="min-w-[1700px] w-full text-left border-separate border-spacing-0">
           <thead>
             <tr className="sticky top-0 z-40 shadow-sm">
               {[
@@ -105,52 +124,57 @@ export default function NominationSubmissions() {
                 { label: "Primary Contact", width: "220px" },
                 { label: "Geography", width: "200px" },
                 { label: "Financials", width: "180px" },
-                { label: "Referral & Remarks", width: "240px" },
+                { label: "Referral & Msg", width: "240px" },
+                { label: "Admin Remark", width: "260px" },
                 { label: "Timestamp", width: "140px" }
               ].map((th, i) => (
-                <th key={i} className="px-4 py-4 bg-slate-50 border-b border-slate-200" style={{ width: th.width }}>
-                  <span className="text-sm font-bold uppercase tracking-wider text-slate-600">{th.label}</span>
+                <th key={i} className="px-5 py-4 bg-slate-100/90 backdrop-blur-md border-b border-slate-200" style={{ width: th.width }}>
+                  <span className="text-[11px] font-black uppercase tracking-widest text-slate-800">{th.label}</span>
                 </th>
               ))}
-              <th className="px-4 py-4 sticky right-0 z-50 bg-slate-50 border-b border-l border-slate-200 text-right shadow-[-4px_0_10px_-4px_rgba(0,0,0,0.05)]">
-                <span className="text-sm font-bold uppercase tracking-wider text-slate-600">Control Node</span>
+              <th className="px-5 py-4 sticky right-0 z-50 bg-slate-100/90 backdrop-blur-md border-b border-l border-slate-200 text-right shadow-[-4px_0_10px_-4px_rgba(0,0,0,0.05)]">
+                <span className="text-[11px] font-black uppercase tracking-widest text-slate-800">Control Node</span>
               </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100">
             {nominations.map((n) => (
-              <tr key={n._id} className="hover:bg-slate-50/50 transition-colors duration-200">
-                <td className="px-4 py-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border bg-sky-50 border-sky-100 text-sky-700 text-sm font-bold uppercase tracking-widest shadow-sm">
-                    <span className="text-base">{n.wantTo?.includes('Nominate') ? '🏆' : n.wantTo?.includes('Speak') ? '🎤' : n.wantTo?.includes('Exhibit') ? '🏢' : '💎'}</span>
+              <tr key={n._id} className="hover:bg-slate-50/80 transition-colors duration-200 group/row">
+                <td className="p-5 align-top">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border bg-sky-50 border-sky-100 text-sky-700 text-[11px] font-black uppercase tracking-widest shadow-sm">
+                    <span className="text-lg">{n.wantTo?.includes('Nominate') ? '🏆' : n.wantTo?.includes('Speak') ? '🎤' : n.wantTo?.includes('Exhibit') ? '🏢' : '💎'}</span>
                     <span className="whitespace-normal leading-tight max-w-[160px]">{n.wantTo}</span>
                   </div>
                 </td>
-                <td className="px-4 py-4">
-                  <div className="space-y-1">
-                    <div className="text-base font-bold text-slate-800 leading-tight">{n.awardName}</div>
-                    <div className="text-sm font-bold text-slate-500 uppercase tracking-widest">{n.registrationType}</div>
+                <td className="p-5 align-top">
+                  <div className="space-y-1.5">
+                    <div className="text-base font-black text-slate-900 leading-snug">{n.awardName}</div>
+                    <div className="text-xs font-bold text-slate-500 uppercase tracking-widest bg-slate-100 inline-block px-2 py-0.5 rounded-md">{n.registrationType}</div>
                   </div>
                 </td>
-                <td className="px-4 py-4">
-                  <div className="space-y-1">
-                    <div className="text-base font-bold text-slate-800">{n.nomineeName}</div>
-                    <div className="text-sm font-bold text-slate-600 uppercase tracking-wider truncate max-w-[200px]">
+                <td className="p-5 align-top">
+                  <div className="space-y-1.5">
+                    <div className="text-base font-black text-slate-900 leading-snug">{n.nomineeName}</div>
+                    <div className="text-xs font-bold text-slate-600 uppercase tracking-wider truncate max-w-[200px] opacity-80">
                       {n.organizationName || "—"}
                     </div>
-                    {n.website && <div className="text-sm font-medium text-sky-600 truncate max-w-[200px]">{n.website}</div>}
+                    {n.website && (
+                      <a href={n.website.startsWith('http') ? n.website : `https://${n.website}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 mt-1 px-2 py-1 bg-sky-50 rounded text-xs font-bold text-sky-700 hover:text-sky-900 hover:bg-sky-100 transition-colors truncate max-w-[200px]">
+                        <span>🌐</span> {n.website}
+                      </a>
+                    )}
                   </div>
                 </td>
-                <td className="px-4 py-4">
-                  <div className="space-y-2">
-                    <span className={`inline-flex items-center border px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-widest ${getStatusBadgeColor(n.status)}`}>
+                <td className="p-5 align-top">
+                  <div className="space-y-2.5">
+                    <span className={`inline-flex items-center border px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-widest shadow-sm ${getStatusBadgeColor(n.status)}`}>
                       {n.status}
                     </span>
                     <select
                       value={n.status}
                       onChange={(e) => handleStatusChange(n._id, e.target.value)}
                       disabled={updatingId === n._id}
-                      className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold uppercase tracking-widest text-slate-700 focus:outline-none focus:border-sky-500 transition-all cursor-pointer shadow-sm disabled:opacity-50"
+                      className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-widest text-slate-700 focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100 transition-all cursor-pointer shadow-sm disabled:opacity-50"
                     >
                       {STATUS_OPTIONS.filter(s => s !== 'ALL STATUSES').map((s) => (
                         <option key={s} value={s}>{s}</option>
@@ -158,9 +182,9 @@ export default function NominationSubmissions() {
                     </select>
                   </div>
                 </td>
-                <td className="px-4 py-4">
-                  <div className="space-y-2">
-                    <span className={`inline-flex items-center border px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-widest ${n.paymentStatus === 'paid' ? 'bg-emerald-50 text-emerald-600 border-emerald-200' :
+                <td className="p-5 align-top">
+                  <div className="space-y-2.5">
+                    <span className={`inline-flex items-center border px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-widest shadow-sm ${n.paymentStatus === 'paid' ? 'bg-emerald-50 text-emerald-600 border-emerald-200' :
                       n.paymentStatus === 'initial_paid' ? 'bg-amber-50 text-amber-600 border-amber-200' :
                         n.paymentStatus === 'not_interested' ? 'bg-red-50 text-red-600 border-red-200' :
                           'bg-slate-50 text-slate-600 border-slate-200'
@@ -174,63 +198,127 @@ export default function NominationSubmissions() {
                       value={n.paymentStatus || 'not_paid'}
                       onChange={(e) => handlePaymentStatusChange(n._id, e.target.value)}
                       disabled={updatingId === n._id}
-                      className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold uppercase tracking-widest text-slate-700 focus:outline-none focus:border-[#d4af37] transition-all cursor-pointer shadow-sm disabled:opacity-50"
+                      className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-widest text-slate-700 focus:outline-none focus:border-[#d4af37] focus:ring-2 focus:ring-amber-100 transition-all cursor-pointer shadow-sm disabled:opacity-50"
                     >
                       <option value="not_paid">Not Paid</option>
                       <option value="initial_paid">Initial Paid</option>
                       <option value="paid">Fully Paid</option>
                       <option value="not_interested">Not Interested</option>
                     </select>
-                    {n.amount && <div className="text-sm font-bold text-slate-700">Amount: ₹{n.amount}</div>}
+                    {n.amount && <div className="text-xs font-black uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-100 inline-block px-2 py-1 rounded-md shadow-sm">Fee: ₹{n.amount}</div>}
                   </div>
                 </td>
-                <td className="px-4 py-4">
-                  <div className="space-y-1.5">
-                    <div className="text-base font-bold text-slate-800">{n.headName || "—"}</div>
-                    <div className="text-sm font-medium text-slate-600">{n.headDesignation || "—"}</div>
-                    <div className="text-sm font-medium text-slate-500 truncate max-w-[180px]">{n.headEmail || "—"}</div>
-                    {n.headMobile && <div className="text-sm font-mono font-medium text-slate-500">{n.headMobile}</div>}
-                  </div>
-                </td>
-                <td className="px-4 py-4">
-                  <div className="space-y-1.5">
-                    <div className="text-base font-bold text-slate-800">{n.contactName || "—"}</div>
-                    <div className="text-sm font-medium text-slate-600">{n.contactDesignation || "—"}</div>
-                    <div className="text-sm font-medium text-slate-500 truncate max-w-[180px]">{n.contactEmail || "—"}</div>
-                    {n.contactMobile && <div className="text-sm font-mono font-medium text-slate-500">{n.contactMobile}</div>}
-                  </div>
-                </td>
-                <td className="px-4 py-4">
-                  <div className="space-y-1.5">
-                    <div className="text-base font-bold text-slate-700">{n.city ? `${n.city}, ${n.state}` : "—"}</div>
-                    <div className="text-sm font-medium text-slate-600 truncate max-w-[180px]">{n.streetAddress || "—"}</div>
-                    {n.zipCode && <div className="text-sm font-medium text-slate-500">{n.zipCode}</div>}
-                  </div>
-                </td>
-                <td className="px-4 py-4">
-                  <div className="space-y-1.5">
-                    <div className="text-base font-bold text-slate-700">Turnover: {n.turnover ? `₹${n.turnover}` : "—"}</div>
-                  </div>
-                </td>
-                <td className="px-4 py-4">
+                <td className="p-5 align-top">
                   <div className="space-y-2">
-                    {n.referredBy && <div className="text-sm font-bold uppercase tracking-widest text-indigo-600">Ref: {n.referredBy}</div>}
-                    <div className="text-sm font-medium text-slate-700 truncate max-w-[200px]" title={n.message}>
-                      <span className="font-bold text-slate-800">Msg:</span> {n.message || "—"}
-                    </div>
-                    <div className="text-sm font-medium text-red-600 truncate max-w-[200px]" title={n.adminRemark}>
-                      <span className="font-bold text-red-700">Admin:</span> {n.adminRemark || "—"}
+                    <div className="text-base font-bold text-slate-800">{n.headName || "—"}</div>
+                    <div className="text-[11px] font-black text-slate-500 uppercase tracking-widest">{n.headDesignation || "—"}</div>
+                    <div className="flex flex-col gap-1.5 mt-2">
+                      {n.headEmail ? <a href={`mailto:${n.headEmail}`} className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors"><span className="text-slate-400">📧</span> {n.headEmail}</a> : <span className="text-slate-400 text-sm">—</span>}
+                      {n.headMobile ? <a href={`tel:${n.headMobile}`} className="inline-flex items-center gap-1.5 text-sm font-mono font-medium text-slate-600 hover:text-sky-600 transition-colors"><span className="text-slate-400">📱</span> {n.headMobile}</a> : null}
                     </div>
                   </div>
                 </td>
-                <td className="px-4 py-4">
-                  <div className="text-sm font-bold uppercase tracking-widest text-slate-500 space-y-1">
-                    <div>{new Date(n.createdAt).toLocaleDateString()}</div>
-                    <div className="text-slate-400 font-semibold">{new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                <td className="p-5 align-top">
+                  <div className="space-y-2">
+                    <div className="text-base font-bold text-slate-800">{n.contactName || "—"}</div>
+                    <div className="text-[11px] font-black text-slate-500 uppercase tracking-widest">{n.contactDesignation || "—"}</div>
+                    <div className="flex flex-col gap-1.5 mt-2">
+                      {n.contactEmail ? <a href={`mailto:${n.contactEmail}`} className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors"><span className="text-slate-400">📧</span> {n.contactEmail}</a> : <span className="text-slate-400 text-sm">—</span>}
+                      {n.contactMobile ? <a href={`tel:${n.contactMobile}`} className="inline-flex items-center gap-1.5 text-sm font-mono font-medium text-slate-600 hover:text-sky-600 transition-colors"><span className="text-slate-400">📱</span> {n.contactMobile}</a> : null}
+                    </div>
                   </div>
                 </td>
-                <td className="px-4 py-4 sticky right-0 z-30 bg-slate-50/95 backdrop-blur-sm border-l border-slate-200 text-right shadow-[-4px_0_10px_-4px_rgba(0,0,0,0.05)]">
-                  <div className="flex items-center justify-end gap-2">
+                <td className="p-5 align-top">
+                  <div className="space-y-1.5">
+                    <div className="text-sm font-bold text-slate-800 leading-snug">{n.city ? `${n.city}, ${n.state}` : "—"}</div>
+                    <div className="text-xs font-medium text-slate-500 leading-snug max-w-[180px]">{n.streetAddress || "—"}</div>
+                    {n.zipCode && <div className="text-[11px] font-black text-slate-400 uppercase tracking-widest pt-1">{n.zipCode}</div>}
+                  </div>
+                </td>
+                <td className="p-5 align-top">
+                  <div className="space-y-1.5">
+                    {n.turnover ? (
+                      <div className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-2 py-1 rounded text-sm font-bold text-slate-700 shadow-sm">
+                        <span>📈</span> ₹{n.turnover}
+                      </div>
+                    ) : (
+                      <span className="text-slate-400 text-sm">—</span>
+                    )}
+                  </div>
+                </td>
+                <td className="p-5 align-top">
+                  <div className="space-y-3 min-w-[220px]">
+                    {n.referredBy && (
+                      <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-bold uppercase tracking-widest shadow-sm">
+                        <span>🔗</span> Ref: {n.referredBy}
+                      </div>
+                    )}
+
+                    {n.message && (
+                      <div className="bg-slate-50 border border-slate-100 rounded-lg p-2.5 shadow-sm group relative" title={n.message}>
+                        <div className="flex items-start gap-2">
+                          <span className="text-slate-400 mt-0.5 text-xs">💬</span>
+                          <p className="text-sm font-medium text-slate-600 line-clamp-4 leading-snug">
+                            {n.message}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </td>
+                <td className="p-5 align-top">
+                  <div className="min-w-[240px]">
+                    <div className="bg-red-50/50 border border-red-100 rounded-lg p-2 shadow-sm hover:bg-red-50 transition-colors group">
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-xs">🛡️</span>
+                          <span className="text-[9px] font-black uppercase tracking-widest text-red-600">
+                            {n.adminName} Note
+                          </span>
+                        </div>
+                      </div>
+
+                      {editingRemarkId === n._id ? (
+                        <div className="flex flex-col gap-2 mt-1.5">
+                          <textarea
+                            value={remarkText}
+                            onChange={(e) => setRemarkText(e.target.value)}
+                            className="w-full min-h-[50px] bg-white border border-red-200 rounded-md px-2 py-1.5 text-xs text-slate-800 focus:outline-none focus:border-red-400 focus:ring-1 focus:ring-red-100 resize-none shadow-inner"
+                            placeholder="Type internal remark..."
+                            autoFocus
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSaveRemark(n._id); }
+                              if (e.key === 'Escape') setEditingRemarkId(null);
+                            }}
+                          />
+                          <div className="flex items-center justify-end gap-1.5">
+                            <button onClick={() => setEditingRemarkId(null)} className="px-2 py-1 rounded bg-slate-200/60 text-slate-600 hover:bg-slate-200 text-[9px] font-bold uppercase tracking-wider transition-colors">Cancel</button>
+                            <button onClick={() => handleSaveRemark(n._id)} className="px-2 py-1 rounded bg-red-500 text-white hover:bg-red-600 text-[9px] font-bold uppercase tracking-wider transition-colors shadow-sm">Save</button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div
+                          onClick={() => { setEditingRemarkId(n._id); setRemarkText(n.adminRemark || ''); }}
+                          className="cursor-pointer flex items-start justify-between gap-2 text-[13px] text-red-700 hover:text-red-900 group-hover:bg-white/60 p-1.5 -mx-1 -my-1 rounded transition-colors mt-0.5"
+                          title="Click to edit admin remark"
+                        >
+                          <span className={`line-clamp-2 leading-snug w-full ${!n.adminRemark && 'italic text-red-400 font-medium text-xs'}`}>
+                            {n.adminRemark || "Click to add a remark..."}
+                          </span>
+                          <Edit2 size={12} className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-0.5 text-red-400" />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </td>
+                <td className="p-5 align-top">
+                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 space-y-1">
+                    <div className="flex items-center gap-1.5"><span className="text-slate-400">📅</span> {new Date(n.createdAt).toLocaleDateString()}</div>
+                    <div className="flex items-center gap-1.5 text-slate-400"><span className="text-slate-300">⏰</span> {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                  </div>
+                </td>
+                <td className="p-5 align-top sticky right-0 z-30 bg-slate-50/95 backdrop-blur-sm border-l border-slate-200 text-right shadow-[-4px_0_10px_-4px_rgba(0,0,0,0.05)] group-hover/row:bg-slate-100/95 transition-colors">
+                  <div className="flex items-center justify-end gap-2 flex-wrap">
                     {n.fileUrl && (
                       <a
                         href={n.fileUrl.startsWith('http') ? n.fileUrl : `${config.apiUrl}${n.fileUrl}`}

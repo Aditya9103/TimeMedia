@@ -186,6 +186,7 @@ const ChiefGuestsGrid = () => {
                 <img
                   src={guest.image}
                   alt={guest.name}
+                  loading="lazy"
                   className="w-full h-full object-cover transform scale-[1.35] group-hover/card:scale-[1.45] transition-transform duration-700 relative z-0"
                 />
               </div>

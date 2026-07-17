@@ -117,6 +117,10 @@ const nominationSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    adminName: {
+      type: String,
+      trim: true,
+    },
     adminRemark: {
       type: String,
       trim: true,

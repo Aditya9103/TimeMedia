@@ -48,8 +48,9 @@ const NominationForm = () => {
   
   const [submitNomination] = useSubmitNominationMutation();
   
-  // Watch registration type to toggle organization fields
+  // Watch fields
   const registrationType = watch('registrationType');
+  const selectedFile = watch('file');
 
   const onSubmit = async (data) => {
     try {
@@ -82,9 +83,9 @@ const NominationForm = () => {
     }
   };
 
-  const inputClass = "w-full px-4 py-3.5 rounded-xl border border-slate-200 text-slate-800 focus:border-[#15b7b9] focus:ring-4 focus:ring-[#15b7b9]/10 outline-none transition-all bg-white shadow-sm font-medium";
-  const labelClass = "block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide";
-  const errorClass = "text-red-500 text-xs font-bold mt-1.5";
+  const inputClass = "w-full px-4 py-3.5 rounded-xl border-2 border-slate-200/80 text-slate-900 focus:border-[#15b7b9] focus:ring-4 focus:ring-[#15b7b9]/15 outline-none transition-all bg-white shadow-sm font-bold placeholder:text-slate-400 placeholder:font-medium text-[15px]";
+  const labelClass = "block text-[11px] font-black text-slate-800 mb-2.5 uppercase tracking-widest";
+  const errorClass = "text-red-500 text-[11px] font-bold uppercase tracking-widest mt-2";
 
   if (submitStatus === 'success') {
     return (
@@ -321,12 +322,24 @@ const NominationForm = () => {
                 className="hidden" 
                 {...register('file')}
               />
-              <label htmlFor="file-upload" className="cursor-pointer flex flex-col items-center gap-3">
-                <div className="w-14 h-14 bg-cyan-50 text-[#15b7b9] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Upload className="w-6 h-6" />
-                </div>
-                <span className="text-base font-bold text-slate-700">Click to upload or drag and drop</span>
-                <span className="text-sm text-slate-500 font-medium">PDF, DOC, DOCX, JPG, PNG (Max. 5MB)</span>
+              <label htmlFor="file-upload" className="cursor-pointer flex flex-col items-center gap-3 w-full">
+                {selectedFile && selectedFile.length > 0 ? (
+                  <>
+                    <div className="w-14 h-14 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <CheckCircle2 className="w-6 h-6" />
+                    </div>
+                    <span className="text-base font-bold text-emerald-600 line-clamp-1 px-4 text-center">{selectedFile[0].name}</span>
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Click to change file</span>
+                  </>
+                ) : (
+                  <>
+                    <div className="w-14 h-14 bg-cyan-50 text-[#15b7b9] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Upload className="w-6 h-6" />
+                    </div>
+                    <span className="text-[15px] font-bold text-slate-700">Click to upload or drag and drop</span>
+                    <span className="text-sm text-slate-500 font-medium">PDF, DOC, DOCX, JPG, PNG (Max. 5MB)</span>
+                  </>
+                )}
               </label>
             </div>
           </div>

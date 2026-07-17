@@ -5,6 +5,7 @@ import api from '../api/axios';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: axiosBaseQuery(api),
+  keepUnusedDataFor: 3600, // Keep cached data for 1 hour when component unmounts
   tagTypes: ['Blog', 'Comment', 'Nomination', 'Contact', 'AwardCategory', 'AwardEvent'],
   endpoints: (builder) => ({
     // ---- BLOGS ----

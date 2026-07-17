@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import connectDB from './config/db.js';
 import config from './config/env.js';
 
 import adminRoutes from './routes/admin.routes.js';
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use('/uploads', express.static('uploads'));
+
 // Professional CORS Configuration
 const allowedOrigins = [...config.clientUrls].filter(Boolean);
 
@@ -52,7 +54,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
 app.use(morgan('dev'));
 
 // Routes
@@ -75,4 +76,19 @@ app.use((err, req, res, next) => {
   });
 });
 
-export default app;
+// Start Server
+const PORT = config.port;
+
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`
+=========================================
+🚀 SERVER STARTED SUCCESSFULLY!
+=========================================
+📡 Port        : ${PORT}
+🔗 URL         : http://localhost:${PORT}
+🌍 Environment : ${config.env.toUpperCase()}
+=========================================
+    `);
+  });
+});

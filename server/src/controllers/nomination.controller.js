@@ -109,6 +109,17 @@ export const getNominations = async (req, res) => {
         { organizationName: searchRegex },
         { contactEmail: searchRegex },
         { headEmail: searchRegex },
+        { headName: searchRegex },
+        { contactName: searchRegex },
+        { headMobile: searchRegex },
+        { contactMobile: searchRegex },
+        { website: searchRegex },
+        { message: searchRegex },
+        { adminRemark: searchRegex },
+        { adminName: searchRegex },
+        { awardName: searchRegex },
+        { city: searchRegex },
+        { state: searchRegex }
       ];
     }
 

@@ -86,10 +86,10 @@ const Footer = () => {
               <a href="https://www.youtube.com/@primetimermedia" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                 <YoutubeIcon />
               </a>
-              <a href="https://wa.me/911140159887" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+              <a href="https://wa.me/919810882769" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                 <WhatsappIcon />
               </a>
-              <a href="https://www.instagram.com/primetimeresearchmedia/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
+              <a href="https://www.instagram.com/primetimemediain/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-500 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                 <InstagramIcon />
               </a>
               <a href="https://www.linkedin.com/company/primetimeresearch-media/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-12 h-12 rounded-full bg-blue-700 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
@@ -119,6 +119,21 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-16 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
           &copy; {new Date().getFullYear()} Prime Time Research Media. All rights reserved.
+        </div>
+        <div className="gap-2 mt-4 flex justify-start sm:justify-center pb-1 px-5">
+          <a
+            href="https://primeimpact.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-amber-500/30 bg-amber-500/5 hover:border-amber-500/80 hover:bg-amber-500/10 transition-all duration-300 shadow-lg shadow-amber-500/5"
+          >
+            <span className="text-[10px] text-slate-400 tracking-wider font-medium">
+              ✦ Designed &amp; Developed by
+            </span>
+            <span className="text-[12px] font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-amber-400">
+              Prime Impact IT Solutions
+            </span>
+          </a>
         </div>
 
       </PageContainer>
