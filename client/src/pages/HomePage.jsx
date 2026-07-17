@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import PageContainer from '../components/layout/PageContainer';
 import ServicesMarquee from '../components/home/ServicesMarquee';
 import HeroVideo from '../components/home/HeroVideo';
@@ -17,28 +18,52 @@ import BrandDivider from '../components/home/BrandDivider';
 import SEO from '../components/common/SEO';
 
 const HomePage = () => {
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 60, scale: 0.98 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 1.2,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
+  const SectionWrapper = ({ children }) => (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.15 }}
+      variants={sectionVariants}
+      className="w-full"
+    >
+      {children}
+    </motion.div>
+  );
+
   return (
     <main>
-      <SEO 
+      <SEO
         title="Prime Time Research Media"
         description="Prime Time Research Media provides elite market research, public relations, business consultancy, and hosts prestigious national and international award summits in India."
       />
       <HeroVideo />
       <PageContainer className="flex flex-col w-full overflow-hidden">
-
-        <BrandDivider />
-        <ClientLogosStrip />
-        <AboutSummary />
-        <ChiefGuestsCarousel />
-        <ServicesGrid />
-        <ServicesMarquee />
-        <ResearchMethodology />
-        <SelectionProcess />
-        <TestimonialSection />
-        <HomeFaqSection />
-        <StatsSection />
-        <LatestNewsSection />
-        <UpcomingEventsSection />
+        <SectionWrapper><BrandDivider /></SectionWrapper>
+        <SectionWrapper><ClientLogosStrip /></SectionWrapper>
+        <SectionWrapper><AboutSummary /></SectionWrapper>
+        <SectionWrapper><ChiefGuestsCarousel /></SectionWrapper>
+        <SectionWrapper><ServicesGrid /></SectionWrapper>
+        <SectionWrapper><ServicesMarquee /></SectionWrapper>
+        <SectionWrapper><ResearchMethodology /></SectionWrapper>
+        <SectionWrapper><SelectionProcess /></SectionWrapper>
+        <SectionWrapper><TestimonialSection /></SectionWrapper>
+        <SectionWrapper><HomeFaqSection /></SectionWrapper>
+        <SectionWrapper><StatsSection /></SectionWrapper>
+        <SectionWrapper><LatestNewsSection /></SectionWrapper>
+        <SectionWrapper><UpcomingEventsSection /></SectionWrapper>
       </PageContainer>
     </main>
   );
