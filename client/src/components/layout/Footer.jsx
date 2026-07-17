@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageContainer from './PageContainer';
 import ContactForm from '../common/ContactForm';
@@ -11,6 +11,24 @@ const WhatsappIcon = () => <svg fill="none" stroke="currentColor" strokeWidth="2
 
 
 const Footer = () => {
+  const [fbWidth, setFbWidth] = useState(340);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 380) {
+        setFbWidth(280);
+      } else {
+        setFbWidth(340);
+      }
+    };
+    
+    // Initial check
+    handleResize();
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <footer className="bg-gray-800 text-gray-300 pt-12 pb-8 md:pt-20 md:pb-10 border-t border-gray-800">
       <PageContainer>
@@ -100,12 +118,13 @@ const Footer = () => {
             </div>
 
             {/* Facebook Page Widget */}
-            <div className="flex w-full max-w-[100%] sm:max-w-[340px] bg-white rounded-lg overflow-hidden shadow-lg justify-center mx-auto lg:ml-auto lg:mr-0">
+            <div className="flex w-full max-w-[340px] bg-white rounded-lg overflow-hidden shadow-lg justify-center mx-auto lg:ml-auto lg:mr-0">
               <iframe
-                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprimetimeresearch&tabs=timeline%2Cevents%2Cmessages&width=340&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&locale=en_US"
+                key={fbWidth}
+                src={`https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprimetimeresearch&tabs=timeline%2Cevents%2Cmessages&width=${fbWidth}&height=450&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&locale=en_US`}
                 width="100%"
-                height="400"
-                className="w-full max-w-[340px]"
+                height="450"
+                className="w-full"
                 style={{ border: 'none', overflow: 'hidden' }}
                 scrolling="no"
                 frameBorder="0"
