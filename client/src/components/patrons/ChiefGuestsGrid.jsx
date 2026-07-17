@@ -1,5 +1,4 @@
-import React from 'react';
-import { StaggerContainer, StaggerItem } from '../animations/StaggerFadeIn';
+import { motion } from 'framer-motion';
 
 const ChiefGuestsGrid = () => {
   const guests = [
@@ -178,9 +177,16 @@ const ChiefGuestsGrid = () => {
   return (
     <div className="py-16">
       <div className="border border-blue-500 rounded-3xl p-8 md:p-12 shadow-sm bg-gray-100">
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-12 gap-y-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-12 gap-y-16">
           {guests.map((guest, index) => (
-            <StaggerItem key={index} className="flex flex-col items-center text-center cursor-pointer group/card w-full">
+            <motion.div 
+              key={index} 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.5, delay: (index % 3) * 0.1 }} // Mini-stagger for performance
+              className="flex flex-col items-center text-center cursor-pointer group/card w-full"
+            >
               <div className="relative w-64 h-64 md:w-80 md:h-80 mb-8 rounded-full overflow-hidden shadow-2xl transition-all duration-500 group-hover/card:shadow-cyan-500/30 group-hover/card:-translate-y-2 max-w-full mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
                 <img
@@ -192,9 +198,9 @@ const ChiefGuestsGrid = () => {
               </div>
               <h3 className="font-bold text-xl text-slate-800 mb-2 group-hover/card:text-[#15b7b9] transition-colors">{guest.name}</h3>
               <p className="text-sm font-medium text-slate-500 px-4 max-w-sm mx-auto">{guest.designation}</p>
-            </StaggerItem>
+            </motion.div>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </div>
   );

@@ -53,7 +53,7 @@ const Navbar = () => {
       <PageContainer className="py-4 flex justify-between items-center">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 pl-5 relative z-[60]">
+        <Link to="/" className={`flex items-center gap-2 pl-5 relative z-30 transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-0 lg:opacity-100 pointer-events-none lg:pointer-events-auto' : 'opacity-100'}`}>
           <img src="/primetimelogo.gif" alt="Logo" className="w-15 h-15" />
         </Link>
 
@@ -172,7 +172,9 @@ const Navbar = () => {
 
         {/* Mobile Menu Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-100">
-          <span className="text-xl font-black tracking-tight uppercase text-slate-900">Menu</span>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+            <img src="/primetimelogo.gif" alt="Logo" className="w-12 h-12 object-contain" />
+          </Link>
           <button
             onClick={() => setMobileMenuOpen(false)}
             className="p-2 bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200 transition-colors focus:outline-none"
