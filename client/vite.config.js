@@ -6,15 +6,8 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          store: ['@reduxjs/toolkit', 'react-redux'],
-          ui: ['lucide-react', 'framer-motion']
-        }
-      }
-    },
+    // Use default Vite chunking instead of manualChunks object
+    // which causes a "TypeError: manualChunks is not a function" in Rolldown
     // Use default esbuild minifier
     minify: true
   }
