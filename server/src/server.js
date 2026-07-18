@@ -25,17 +25,22 @@ const allowedOrigins = [...config.clientUrls].filter(Boolean);
 
 const corsOptions = {
   origin: (origin, callback) => {
+    // Remove trailing slashes for robust matching
+    const sanitizedOrigin = origin ? origin.replace(/\/$/, '') : origin;
+    const sanitizedAllowedOrigins = allowedOrigins.map(url => url.replace(/\/$/, ''));
+
     // Allow requests with no origin (like Postman or curl) ONLY in development
-    if (!origin && config.env !== 'production') {
+    if (!sanitizedOrigin && config.env !== 'production') {
       return callback(null, true);
     }
 
     // Check if the incoming origin is in our allowed list
-    if (allowedOrigins.includes(origin)) {
+    if (sanitizedAllowedOrigins.includes(sanitizedOrigin)) {
       return callback(null, true);
     }
 
     // Reject the request if origin is not allowed
+    console.error(`CORS BLOCKED: Incoming origin '${sanitizedOrigin}' is not in allowed list:`, sanitizedAllowedOrigins);
     return callback(new Error('CORS policy violation: This origin is not permitted.'), false);
   },
   credentials: true, // Allow cookies and authorization headers
