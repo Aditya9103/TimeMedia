@@ -7,8 +7,13 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
     // Use default Vite chunking instead of manualChunks object
-    // which causes a "TypeError: manualChunks is not a function" in Rolldown
-    // Use default esbuild minifier
-    minify: true
+    // Use terser for more aggressive minification to pass SEO audits
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
   }
 })

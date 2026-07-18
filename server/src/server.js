@@ -28,7 +28,7 @@ const corsOptions = {
     if (!origin && config.env !== 'production') {
       return callback(null, true);
     }
-    
+
     // Check if the incoming origin is in our allowed list
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
@@ -40,13 +40,14 @@ const corsOptions = {
   credentials: true, // Allow cookies and authorization headers
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
   allowedHeaders: [
-    'Content-Type', 
-    'Authorization', 
-    'X-Requested-With', 
+    'Content-Type',
+    'Authorization',
+    'X-Requested-With',
     'Accept',
     'Origin',
     'Access-Control-Request-Method',
-    'Access-Control-Request-Headers'
+    'Access-Control-Request-Headers',
+
   ],
   exposedHeaders: ['set-cookie'],
   optionsSuccessStatus: 200, // Provide support for legacy browsers (IE11, various SmartTVs)

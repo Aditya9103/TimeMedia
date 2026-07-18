@@ -45,9 +45,10 @@ const HomePage = () => {
 
   return (
     <main>
+      <h1 className="sr-only">Prime Time Research Media - Top PR, Awards & Market Research Agency in India</h1>
       <SEO
-        title="Prime Time Research Media"
-        description="Prime Time Research Media provides elite market research, public relations, business consultancy, and hosts prestigious national and international award summits in India."
+        title="Prime Time Research Media | Top PR, Awards & Market Research India"
+        description="Prime Time Research Media provides top PR, market research, and business consultancy in India, hosting prestigious national & international award summits."
       />
       <HeroVideo />
       <PageContainer className="flex flex-col w-full overflow-hidden">

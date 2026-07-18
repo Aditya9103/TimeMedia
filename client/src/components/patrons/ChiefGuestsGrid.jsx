@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const ChiefGuestsGrid = () => {
   const guests = [
     {
-      name: 'Virender Sehwag',
+      name: 'Shri Virendra Sehwag',
       designation: 'An Indian cricket commentator and former cricketer',
       image: '/guest/guest1vs.jpeg'
     },
@@ -179,8 +179,8 @@ const ChiefGuestsGrid = () => {
       <div className="border border-blue-500 rounded-3xl p-8 md:p-12 shadow-sm bg-gray-100">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-12 gap-y-16">
           {guests.map((guest, index) => (
-            <motion.div 
-              key={index} 
+            <motion.div
+              key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}

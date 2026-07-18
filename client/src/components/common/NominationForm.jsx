@@ -30,8 +30,8 @@ const REFERRED_BY_OPTIONS = [
   'Vishal',
   'Kajal',
   'Nandini',
-  'Snower',
-  'The highest'
+  'Other'
+
 ];
 
 const NominationForm = () => {
@@ -45,9 +45,9 @@ const NominationForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
   const [errorMessage, setErrorMessage] = useState('');
-  
+
   const [submitNomination] = useSubmitNominationMutation();
-  
+
   // Watch fields
   const registrationType = watch('registrationType');
   const selectedFile = watch('file');
@@ -56,7 +56,7 @@ const NominationForm = () => {
     try {
       setSubmitStatus('submitting');
       setErrorMessage('');
-      
+
       const formData = new FormData();
       Object.keys(data).forEach(key => {
         if (key !== 'file' && data[key] !== undefined && data[key] !== '') {
@@ -97,7 +97,7 @@ const NominationForm = () => {
         <p className="text-lg text-gray-600 mb-8 leading-relaxed">
           Thank you for submitting your nomination. We have successfully received your details. Our team will evaluate your submission and get back to you soon.
         </p>
-        <button 
+        <button
           onClick={() => setSubmitStatus(null)}
           className="px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-full font-bold transition-all"
         >
@@ -109,7 +109,7 @@ const NominationForm = () => {
 
   return (
     <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-12 border border-slate-100">
-      
+
       {submitStatus === 'error' && (
         <div className="bg-red-50 text-red-600 p-4 rounded-xl flex items-start gap-3 border border-red-200 mb-8">
           <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
@@ -118,15 +118,15 @@ const NominationForm = () => {
       )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-        
+
         {/* Section: Category Selection */}
         <div className="bg-slate-50/70 p-6 md:p-8 rounded-2xl border border-slate-100 space-y-6">
           <h3 className="text-xl font-bold text-slate-800 border-b border-slate-200 pb-4 mb-2">1. Select Category</h3>
-          
+
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <label className={labelClass}>For Which Award Form To Be Filled *</label>
-              <select 
+              <select
                 className={`${inputClass} ${errors.awardName ? 'border-red-500' : ''}`}
                 {...register('awardName', { required: 'Please select an award' })}
               >
@@ -140,7 +140,7 @@ const NominationForm = () => {
 
             <div>
               <label className={labelClass}>Want to *</label>
-              <select 
+              <select
                 className={`${inputClass} ${errors.wantTo ? 'border-red-500' : ''}`}
                 {...register('wantTo', { required: 'Please select an option' })}
               >
@@ -157,18 +157,18 @@ const NominationForm = () => {
             <label className={labelClass}>Select your Registration type *</label>
             <div className="flex gap-6 mt-2">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input 
-                  type="radio" 
-                  value="organisation" 
+                <input
+                  type="radio"
+                  value="organisation"
                   className="w-4 h-4 text-sky-600 focus:ring-sky-500"
                   {...register('registrationType')}
                 />
                 <span className="text-gray-700 font-medium">Organisation</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
-                <input 
-                  type="radio" 
-                  value="individual" 
+                <input
+                  type="radio"
+                  value="individual"
                   className="w-4 h-4 text-sky-600 focus:ring-sky-500"
                   {...register('registrationType')}
                 />
@@ -181,12 +181,12 @@ const NominationForm = () => {
         {/* Section: Basic Details */}
         <div className="bg-slate-50/70 p-6 md:p-8 rounded-2xl border border-slate-100 space-y-6">
           <h3 className="text-xl font-bold text-slate-800 border-b border-slate-200 pb-4 mb-2">2. Entity Details</h3>
-          
+
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <label className={labelClass}>Nominee Name *</label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 placeholder="Enter nominee name"
                 className={`${inputClass} ${errors.nomineeName ? 'border-red-500' : ''}`}
                 {...register('nomineeName', { required: 'Nominee name is required' })}
@@ -197,8 +197,8 @@ const NominationForm = () => {
             {registrationType === 'organisation' && (
               <div>
                 <label className={labelClass}>Organization/Clinic/Hospital Name *</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   placeholder="Enter organization name"
                   className={`${inputClass} ${errors.organizationName ? 'border-red-500' : ''}`}
                   {...register('organizationName', { required: 'Organization name is required for organisations' })}
@@ -212,7 +212,7 @@ const NominationForm = () => {
         {/* Section: Organization Head Details */}
         <div className="bg-slate-50/70 p-6 md:p-8 rounded-2xl border border-slate-100 space-y-6">
           <h3 className="text-xl font-bold text-slate-800 border-b border-slate-200 pb-4 mb-2">3. Head Details</h3>
-          
+
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <label className={labelClass}>Name of Organization Head</label>
@@ -236,7 +236,7 @@ const NominationForm = () => {
         {/* Section: Contact Person Details */}
         <div className="bg-slate-50/70 p-6 md:p-8 rounded-2xl border border-slate-100 space-y-6">
           <h3 className="text-xl font-bold text-slate-800 border-b border-slate-200 pb-4 mb-2">4. Contact Person Details</h3>
-          
+
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <label className={labelClass}>Contact Person Name</label>
@@ -248,22 +248,22 @@ const NominationForm = () => {
             </div>
             <div>
               <label className={labelClass}>Contact Person Email *</label>
-              <input 
-                type="email" 
+              <input
+                type="email"
                 className={`${inputClass} ${errors.contactEmail ? 'border-red-500' : ''}`}
-                {...register('contactEmail', { 
+                {...register('contactEmail', {
                   required: 'Contact email is required',
                   pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' }
-                })} 
+                })}
               />
               {errors.contactEmail && <p className={errorClass}>{errors.contactEmail.message}</p>}
             </div>
             <div>
               <label className={labelClass}>Contact Person’s Mobile *</label>
-              <input 
-                type="tel" 
+              <input
+                type="tel"
                 className={`${inputClass} ${errors.contactMobile ? 'border-red-500' : ''}`}
-                {...register('contactMobile', { required: 'Contact mobile is required' })} 
+                {...register('contactMobile', { required: 'Contact mobile is required' })}
               />
               {errors.contactMobile && <p className={errorClass}>{errors.contactMobile.message}</p>}
             </div>
@@ -273,7 +273,7 @@ const NominationForm = () => {
         {/* Section: Additional Information */}
         <div className="bg-slate-50/70 p-6 md:p-8 rounded-2xl border border-slate-100 space-y-6">
           <h3 className="text-xl font-bold text-slate-800 border-b border-slate-200 pb-4 mb-2">5. Additional Information</h3>
-          
+
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <label className={labelClass}>Website</label>
@@ -283,12 +283,12 @@ const NominationForm = () => {
               <label className={labelClass}>Turnover for Last Financial Year (in digit)</label>
               <input type="number" placeholder="e.g. 5000000" className={inputClass} {...register('turnover')} />
             </div>
-            
+
             <div className="md:col-span-2">
               <label className={labelClass}>Street Address</label>
               <input type="text" className={inputClass} {...register('streetAddress')} />
             </div>
-            
+
             <div>
               <label className={labelClass}>City</label>
               <input type="text" className={inputClass} {...register('city')} />
@@ -312,14 +312,14 @@ const NominationForm = () => {
               </select>
             </div>
           </div>
-          
+
           <div className="pt-4">
             <label className={labelClass}>Upload File (Optional)</label>
             <div className="border-2 border-dashed border-slate-300 rounded-2xl p-8 text-center hover:bg-slate-50 hover:border-[#15b7b9] transition-all cursor-pointer group">
-              <input 
-                type="file" 
-                id="file-upload" 
-                className="hidden" 
+              <input
+                type="file"
+                id="file-upload"
+                className="hidden"
                 {...register('file')}
               />
               <label htmlFor="file-upload" className="cursor-pointer flex flex-col items-center gap-3 w-full">
@@ -346,8 +346,8 @@ const NominationForm = () => {
 
           <div>
             <label className={labelClass}>Message</label>
-            <textarea 
-              rows="4" 
+            <textarea
+              rows="4"
               className={`${inputClass} resize-none`}
               {...register('message')}
             ></textarea>
@@ -357,8 +357,8 @@ const NominationForm = () => {
         {/* Section: Terms & Submit */}
         <div className="bg-sky-50 p-6 rounded-xl border border-sky-100">
           <label className="flex items-start gap-4 cursor-pointer">
-            <input 
-              type="checkbox" 
+            <input
+              type="checkbox"
               className="mt-1 w-5 h-5 text-sky-600 rounded focus:ring-sky-500"
               {...register('termsAccepted', { required: 'You must accept the Terms & Conditions' })}
             />

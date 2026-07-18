@@ -24,7 +24,16 @@ export const createAwardCategory = async (req, res) => {
 
 export const updateAwardCategory = async (req, res) => {
   try {
-    const category = await AwardCategory.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    const data = { ...req.body };
+    // Automatically regenerate slug if name is updated
+    if (data.name) {
+      data.slug = data.name
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)+/g, '');
+    }
+
+    const category = await AwardCategory.findByIdAndUpdate(req.params.id, data, { new: true, runValidators: true });
     if (!category) return res.status(404).json({ success: false, message: 'Category not found' });
     res.status(200).json({ success: true, data: category });
   } catch (error) {
@@ -108,6 +117,14 @@ export const createAwardEvent = async (req, res) => {
 export const updateAwardEvent = async (req, res) => {
   try {
     const data = { ...req.body };
+
+    // Automatically regenerate slug if title is updated
+    if (data.title) {
+      data.slug = data.title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)+/g, '');
+    }
 
     // Parse JSON strings back to objects
     if (typeof data.videoGallery === 'string') {

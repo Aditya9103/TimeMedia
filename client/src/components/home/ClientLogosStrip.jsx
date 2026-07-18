@@ -32,7 +32,7 @@ const ClientLogosStrip = () => {
         <div className="animate-scroll flex items-center flex-shrink-0 w-max group-hover:[animation-play-state:paused]">
           {[...logos, ...logos].map((logo, index) => (
             <div key={`orig-${index}`} className="px-8 flex-shrink-0">
-              <img
+              <img loading="lazy"
                 src={logo.url}
                 alt={logo.name}
                 className="h-10 md:h-16 lg:h-20 w-auto object-contain transition-transform duration-300 cursor-pointer hover:scale-105"

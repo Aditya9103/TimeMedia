@@ -75,7 +75,7 @@ const data = [
     ]
   },
   {
-    category: "Digital Bharat Summit 2025",
+    category: "Digital Bharat Summit",
     events: []
   },
   {
@@ -93,7 +93,7 @@ const data = [
 const seedData = async () => {
   try {
     await connectDB();
-    
+
     for (let i = 0; i < data.length; i++) {
       const catData = data[i];
       let category = await AwardCategory.findOne({ name: catData.category });
@@ -115,7 +115,7 @@ const seedData = async () => {
         }
       }
     }
-    
+
     console.log('Seeding completed successfully!');
     process.exit(0);
   } catch (error) {

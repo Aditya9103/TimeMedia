@@ -6,7 +6,7 @@ const config = {
   port: process.env.PORT || 3000,
 
   mongoUri: process.env.MONGO_URI,
-  clientUrls: process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',').map(url => url.trim()) : ['http://localhost:5173'],
+  clientUrls: process.env.CLIENT_URL.split(',').map(url => url.trim()),
 
   jwtSecret: process.env.JWT_SECRET,
   adminSecretCode: process.env.ADMIN_SECRET_CODE,

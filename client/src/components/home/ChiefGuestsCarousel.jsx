@@ -4,8 +4,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const ChiefGuestsCarousel = () => {
   const originalGuests = [
     {
-      name: 'Shri Virendra Sharma',
-      designation: '',
+      name: 'Shri Virendra Sehwag',
+      designation: 'An Indian cricket commentator and former cricketer',
       image: '/guest/guest1vs.jpeg'
     },
     {
@@ -20,7 +20,7 @@ const ChiefGuestsCarousel = () => {
     },
     {
       name: 'Dr Yogendra Shastri',
-      designation: '',
+      designation: 'Former Speaker of the Delhi Legislative Assembly, Cabinet Minister, and academician',
       image: '/guest/guest4ys.jpeg'
     },
     {
