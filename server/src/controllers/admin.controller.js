@@ -41,7 +41,7 @@ export const registerAdmin = async (req, res) => {
       res.cookie("jwt", token, {
         httpOnly: true,
         secure: config.env === "production",
-        sameSite: "strict",
+        sameSite: config.env === "production" ? "none" : "strict",
         maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
       });
 
@@ -73,7 +73,7 @@ export const loginAdmin = async (req, res) => {
       res.cookie("jwt", token, {
         httpOnly: true,
         secure: config.env === "production",
-        sameSite: "strict",
+        sameSite: config.env === "production" ? "none" : "strict",
         maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
       });
 
@@ -96,6 +96,8 @@ export const loginAdmin = async (req, res) => {
 export const logoutAdmin = (req, res) => {
   res.cookie("jwt", "", {
     httpOnly: true,
+    secure: config.env === "production",
+    sameSite: config.env === "production" ? "none" : "strict",
     expires: new Date(0),
   });
   res.status(200).json({ message: "Logged out successfully" });
