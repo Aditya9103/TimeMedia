@@ -12,6 +12,7 @@ import blogRoutes from './routes/blog.routes.js';
 import awardRoutes from './routes/award.routes.js';
 
 const app = express();
+app.set("trust proxy", 1); // Trust first proxy (Render load balancer)
 
 // Middleware
 app.use(express.json());
