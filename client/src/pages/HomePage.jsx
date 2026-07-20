@@ -5,6 +5,8 @@ import ServicesMarquee from '../components/home/ServicesMarquee';
 import HeroVideo from '../components/home/HeroVideo';
 import HomeFaqSection from '../components/home/HomeFaqSection';
 import ServicesGrid from '../components/home/ServicesGrid';
+import AdvertisingServicesGrid from '../components/home/AdvertisingServicesGrid';
+import AdvertisingServicesMarquee from '../components/home/AdvertisingServicesMarquee';
 import ResearchMethodology from '../components/home/ResearchMethodology';
 import SelectionProcess from '../components/home/SelectionProcess';
 import TestimonialSection from '../components/home/TestimonialSection';
@@ -56,6 +58,8 @@ const HomePage = () => {
         <SectionWrapper><ClientLogosStrip /></SectionWrapper>
         <SectionWrapper><AboutSummary /></SectionWrapper>
         <SectionWrapper><ChiefGuestsCarousel /></SectionWrapper>
+        <SectionWrapper><AdvertisingServicesGrid /></SectionWrapper>
+        <SectionWrapper><AdvertisingServicesMarquee /></SectionWrapper>
         <SectionWrapper><ServicesGrid /></SectionWrapper>
         <SectionWrapper><ServicesMarquee /></SectionWrapper>
         <SectionWrapper><ResearchMethodology /></SectionWrapper>

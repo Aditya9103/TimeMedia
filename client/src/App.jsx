@@ -12,6 +12,7 @@ const AboutPage = lazy(() => import('./pages/AboutPage'));
 const OurPatronsPage = lazy(() => import('./pages/OurPatronsPage'));
 const ContactUs = lazy(() => import('./pages/ContactUs'));
 const ServiceDetails = lazy(() => import('./pages/ServiceDetails'));
+const AdvertisingServiceDetail = lazy(() => import('./pages/AdvertisingServiceDetail'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogDetailsPage = lazy(() => import('./pages/BlogDetailsPage'));
 const AwardsLanding = lazy(() => import('./pages/AwardsLanding'));
@@ -55,6 +56,8 @@ function App() {
             <Route path="/our-patrons" element={<OurPatronsPage />} />
             <Route path="/services" element={<Navigate to="/services/market-research" replace />} />
             <Route path="/services/:serviceId" element={<ServiceDetails />} />
+            <Route path="/advertising-services" element={<Navigate to="/advertising-services/auto-rickshaw-branding" replace />} />
+            <Route path="/advertising-services/:serviceId" element={<AdvertisingServiceDetail />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/awards" element={<AwardsLanding />} />
             <Route path="/awards/:categorySlug" element={<AwardsLanding />} />

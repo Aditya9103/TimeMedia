@@ -3,12 +3,15 @@ import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import PageContainer from './PageContainer';
 import { servicesList } from '../../data/servicesData';
+import { advertisingServicesData } from '../../data/advertisingServicesData';
 import { useGetAwardCategoriesQuery, useGetAwardEventsQuery } from '../../store/apiSlice';
 
 const Navbar = () => {
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [advertisingDropdownOpen, setAdvertisingDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [awardsMobileOpen, setAwardsMobileOpen] = useState(false);
+  const [advertisingMobileOpen, setAdvertisingMobileOpen] = useState(false);
   const location = useLocation();
 
   const { data: catRes } = useGetAwardCategoriesQuery();
@@ -23,7 +26,9 @@ const Navbar = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
     setServicesDropdownOpen(false);
+    setAdvertisingDropdownOpen(false);
     setAwardsMobileOpen(false);
+    setAdvertisingMobileOpen(false);
     setActiveCategory(null);
   }, [location.pathname]);
 
@@ -147,6 +152,33 @@ const Navbar = () => {
               </div>
             </li>
 
+            {/* Advertising Services Dropdown (Desktop) */}
+            <li
+              className="relative group h-full py-4"
+              onMouseEnter={() => setAdvertisingDropdownOpen(true)}
+              onMouseLeave={() => setAdvertisingDropdownOpen(false)}
+            >
+              <button className={`flex items-center relative group/link transition-colors gap-1 uppercase font-bold text-sm ${location.pathname.includes('/advertising-services') ? 'text-[#15b7b9]' : 'text-slate-800'} hover:text-[#15b7b9]`}>
+                Advertising <ChevronDown size={14} className={`transition-transform duration-200 ${advertisingDropdownOpen ? 'rotate-180' : ''}`} />
+                <span className={`absolute -bottom-1.5 left-0 w-full h-[2px] bg-[#15b7b9] transform origin-left transition-transform duration-300 ${location.pathname.includes('/advertising-services') ? 'scale-x-100' : 'scale-x-0 group-hover/link:scale-x-100'}`}></span>
+              </button>
+
+              <div className={`absolute top-full left-0 w-64 bg-white shadow-xl rounded-lg overflow-hidden border border-slate-100 transition-all duration-300 origin-top z-50 ${advertisingDropdownOpen ? 'opacity-100 scale-y-100 visible' : 'opacity-0 scale-y-0 invisible'}`}>
+                <div className="py-2 flex flex-col max-h-[60vh] overflow-y-auto custom-scrollbar">
+                  {advertisingServicesData.map((service) => (
+                    <Link
+                      key={service.id}
+                      to={`/advertising-services/${service.id}`}
+                      className={`px-4 py-2.5 text-xs font-bold transition-colors block text-left uppercase tracking-wider hover:bg-slate-50 hover:text-[#15b7b9] ${location.pathname === `/advertising-services/${service.id}` ? 'text-[#15b7b9] bg-slate-50' : 'text-slate-700'}`}
+                      onClick={() => setAdvertisingDropdownOpen(false)}
+                    >
+                      {service.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </li>
+
             {navLinks.slice(4).map((link) => (
               <li key={link.name}>
                 <Link to={link.path} className={`relative group/link transition-colors hover:text-[#15b7b9] ${location.pathname === link.path ? 'text-[#15b7b9]' : 'text-slate-800'}`}>
@@ -264,6 +296,34 @@ const Navbar = () => {
                       className={`text-xs font-bold transition-colors block uppercase tracking-wider ${location.pathname === `/services/${service.id}` ? 'text-[#15b7b9]' : 'text-slate-600'}`}
                     >
                       {service.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </li>
+
+            {/* Advertising Services Accordion (Mobile) */}
+            <li className="flex flex-col">
+              <button
+                className={`flex items-center justify-between w-full transition-colors uppercase font-bold text-sm ${location.pathname.includes('/advertising-services') ? 'text-[#15b7b9]' : 'text-slate-800'} hover:text-[#15b7b9]`}
+                onClick={() => setAdvertisingMobileOpen(!advertisingMobileOpen)}
+              >
+                Advertising
+                <ChevronDown size={18} className={`transition-transform duration-300 ${advertisingMobileOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Mobile Advertising Sub-menu */}
+              <div
+                className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out ${advertisingMobileOpen ? 'max-h-[800px] mt-4 opacity-100' : 'max-h-0 opacity-0'}`}
+              >
+                <div className="pl-4 border-l-2 border-[#15b7b9]/30 flex flex-col space-y-4 py-2">
+                  {advertisingServicesData.map((service) => (
+                    <Link
+                      key={service.id}
+                      to={`/advertising-services/${service.id}`}
+                      className={`text-xs font-bold transition-colors block uppercase tracking-wider ${location.pathname === `/advertising-services/${service.id}` ? 'text-[#15b7b9]' : 'text-slate-600'}`}
+                    >
+                      {service.title}
                     </Link>
                   ))}
                 </div>
