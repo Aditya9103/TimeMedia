@@ -9,6 +9,22 @@ const api = axios.create({
   withCredentials: true,
 });
 
+// Request Interceptor to attach Bearer token (Fixes Vercel/Render third-party cookie blocking)
+api.interceptors.request.use((config) => {
+  const adminInfo = localStorage.getItem('adminInfo');
+  if (adminInfo) {
+    try {
+      const { token } = JSON.parse(adminInfo);
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    } catch (e) {
+      console.error('Failed to parse adminInfo from localStorage');
+    }
+  }
+  return config;
+});
+
 // Response Interceptor for global error handling
 api.interceptors.response.use(
   (response) => response,

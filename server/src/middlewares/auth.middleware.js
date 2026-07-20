@@ -5,8 +5,11 @@ import config from "../config/env.js";
 export const protectAdmin = async (req, res, next) => {
   let token;
 
-  // Read JWT from the 'jwt' cookie
+  // Read JWT from the 'jwt' cookie or Authorization header
   token = req.cookies.jwt;
+  if (!token && req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
+    token = req.headers.authorization.split(" ")[1];
+  }
 
   if (token) {
     try {
