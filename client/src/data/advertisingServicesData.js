@@ -3,7 +3,7 @@ export const advertisingServicesData = [
     id: 'auto-rickshaw-branding',
     title: 'Auto Rickshaw Branding',
     shortDescription: 'Affordable moving media for hyperlocal marketing.',
-    image: '/advertising/auto-rickshaw-branding.png',
+    image: '/advertising/auto-rickshaw-branding.jpeg',
     content: {
       headline: 'Auto Rickshaw Branding',
       fullDescription: "Turn every ride into a moving advertisement with Auto Rickshaw Branding. Reach thousands of commuters, pedestrians, and motorists every day through high-visibility ads placed on auto rickshaws across busy streets and key commercial areas. This cost-effective outdoor advertising solution helps your brand achieve continuous exposure, strengthen local presence, and connect with your target audience wherever they travel. Whether you're promoting a product, service, event, or business, auto rickshaw branding ensures your message stays on the move—24/7.",
