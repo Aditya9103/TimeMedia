@@ -5,8 +5,8 @@ export const advertisingServicesData = [
     shortDescription: 'Affordable moving media for hyperlocal marketing.',
     image: '/advertising/auto-rickshaw-branding.png',
     content: {
-      headline: 'Hyperlocal Reach with Auto Rickshaw Branding',
-      fullDescription: 'Auto Rickshaw advertising offers a cost-effective and highly visible way to reach audiences at a hyperlocal level. These moving billboards travel through narrow streets, residential areas, and bustling markets, ensuring your brand message reaches corners where traditional hoardings cannot.',
+      headline: 'Auto Rickshaw Branding',
+      fullDescription: "Turn every ride into a moving advertisement with Auto Rickshaw Branding. Reach thousands of commuters, pedestrians, and motorists every day through high-visibility ads placed on auto rickshaws across busy streets and key commercial areas. This cost-effective outdoor advertising solution helps your brand achieve continuous exposure, strengthen local presence, and connect with your target audience wherever they travel. Whether you're promoting a product, service, event, or business, auto rickshaw branding ensures your message stays on the move—24/7.",
       benefits: [
         'Cost-effective marketing with high ROI',
         'Exceptional hyperlocal penetration',
@@ -19,10 +19,10 @@ export const advertisingServicesData = [
     id: 'cab-branding',
     title: 'Cab Branding',
     shortDescription: 'Premium vehicle branding for city-wide campaigns.',
-    image: '/advertising/cab-branding.png',
+    image: '/advertising/cab-branding.jpeg',
     content: {
-      headline: 'City-Wide Dominance with Premium Cab Branding',
-      fullDescription: 'Cab branding transforms popular ride-sharing vehicles into premium mobile billboards. Covering extensive city routes, business districts, and airports, cab advertising provides massive daily impressions and reaches a diverse demographic of urban consumers and professionals.',
+      headline: 'Cab Branding',
+      fullDescription: "Transform every drive into a powerful marketing opportunity with professional car branding solutions. Whether it's a single vehicle or an entire fleet, branded cars take your message directly to the streets, ensuring your business is seen by thousands of potential customers every day. Car branding is a cost-effective form of outdoor advertising that delivers continuous visibility without recurring media costs. As your vehicles travel through busy roads, residential neighborhoods, commercial districts, and business hubs, they create lasting brand recall and help you reach a wider audience naturally. Using premium-quality vinyl wraps and high-definition printing, we create visually striking vehicle graphics that are durable, weather-resistant, and tailored to reflect your brand identity. From concept and design to printing and installation, we provide complete end-to-end car branding solutions for businesses of every size. Turn every journey into a branding opportunity and let your business stand out wherever the road takes you.",
       benefits: [
         'Premium brand perception',
         'Extensive city-wide coverage',
@@ -35,10 +35,10 @@ export const advertisingServicesData = [
     id: 'bus-branding',
     title: 'Bus Branding',
     shortDescription: 'Transit advertising with maximum visibility.',
-    image: '/advertising/bus-branding.png',
+    image: '/advertising/bus-branding.jpeg',
     content: {
-      headline: 'Command the Streets with High-Impact Bus Branding',
-      fullDescription: 'Bus advertising provides unparalleled, massive visibility on primary city arterial roads. The sheer size of bus panels creates a commanding presence, offering continuous exposure to pedestrians, motorists, and passengers across fixed, strategic routes.',
+      headline: 'Bus Branding',
+      fullDescription: "Bus branding is one of the most impactful forms of outdoor advertising, offering unmatched visibility across cities and highways. With large advertising spaces and continuous movement, branded buses ensure your message reaches thousands of commuters, pedestrians, and motorists every day. Whether you're launching a new product, promoting a service, or building brand awareness, bus branding provides long-lasting exposure at an affordable cost. We offer creative designs, premium-quality vinyl wraps, and professional installation to help your brand travel farther and leave a lasting impression. Take your brand on every route and reach audiences wherever they go.",
       benefits: [
         'Massive visual impact',
         'Route-specific targeting',
@@ -51,10 +51,10 @@ export const advertisingServicesData = [
     id: 'airport-branding',
     title: 'Airport Branding',
     shortDescription: 'Reach premium travelers through airport media.',
-    image: '/advertising/airport-branding.png',
+    image: '/advertising/airport-branding.jpeg',
     content: {
-      headline: 'Engage Global Audiences with Airport Branding',
-      fullDescription: 'Airport advertising allows you to target a highly affluent, captive audience of business leaders, frequent flyers, and tourists. From digital screens at baggage claims to massive terminal hoardings, airport media places your brand in an environment associated with prestige and international reach.',
+      headline: 'Airport Branding',
+      fullDescription: "Airport branding places your business in front of premium, high-value audiences, including business travelers, tourists, and professionals. From digital screens and wall wraps to baggage claim areas and departure lounges, airport advertising delivers exceptional visibility in a sophisticated environment. With millions of passengers passing through airports annually, your brand gains credibility, wider reach, and stronger recall. We provide end-to-end airport branding solutions that maximize exposure at every customer touchpoint. Elevate your brand where journeys begin and opportunities take flight.",
       benefits: [
         'Access to high-net-worth individuals (HNIs)',
         'Unmatched captive audience environment',
@@ -67,10 +67,10 @@ export const advertisingServicesData = [
     id: 'outdoor-advertising',
     title: 'Outdoor Advertising',
     shortDescription: 'Billboards, hoardings and OOH advertising.',
-    image: '/advertising/outdoor-advertising.png',
+    image: '/advertising/outdoor-advertising.jpeg',
     content: {
-      headline: 'Unmissable Impact with Out-of-Home Advertising',
-      fullDescription: 'Outdoor advertising (OOH), encompassing massive billboards, gantries, and prominent city hoardings, is the backbone of mass brand awareness. Strategically placed at high-traffic intersections, these monumental displays ensure your brand is unmissable and dominant.',
+      headline: 'Outdoor Branding',
+      fullDescription: "Outdoor branding helps your business stay visible 24/7 through billboards, hoardings, kiosks, transit media, and other high-impact advertising spaces. It captures attention in busy streets, highways, commercial hubs, and residential areas, creating powerful brand awareness. Designed for maximum exposure and long-term visibility, outdoor advertising is an effective way to reach large audiences consistently. From creative concepts to installation, we deliver complete outdoor branding solutions tailored to your marketing goals. Make your brand impossible to miss with impactful outdoor advertising.",
       benefits: [
         'Larger-than-life brand presence',
         '24/7 uninterrupted visibility',
@@ -83,10 +83,10 @@ export const advertisingServicesData = [
     id: 'promotional-standee',
     title: 'Promotional Standee',
     shortDescription: 'Retail and event branding solutions.',
-    image: '/advertising/promotional-standee.png',
+    image: '/advertising/promotional-standee.jpeg',
     content: {
-      headline: 'Portable & Striking Promotional Standees',
-      fullDescription: 'Promotional standees (roll-up banners) are versatile, eye-catching, and highly portable advertising tools. Perfect for retail outlets, corporate events, trade shows, and mall activations, they deliver your core message effectively right at the point of sale.',
+      headline: 'Promotional Standee',
+      fullDescription: "Promotional standees are an effective way to grab attention at exhibitions, retail stores, corporate offices, malls, conferences, and promotional events. Their compact design and striking visuals make them ideal for communicating offers, launching products, and increasing brand visibility. We create high-quality, easy-to-install standees with premium printing and durable materials that reflect your brand professionally and leave a lasting impression. Stand tall, attract attention, and promote your brand with confidence.",
       benefits: [
         'Highly portable and easy to setup',
         'Perfect for Point-of-Sale (POS) marketing',
@@ -99,10 +99,10 @@ export const advertisingServicesData = [
     id: 'promotional-umbrella',
     title: 'Promotional Umbrella',
     shortDescription: 'Brand promotion with customized umbrellas.',
-    image: '/advertising/promotional-umbrella.png',
+    image: '/advertising/promotional-umbrella.jpeg',
     content: {
-      headline: 'Stand Out with Custom Promotional Umbrellas',
-      fullDescription: 'Promotional umbrellas are highly effective functional advertising tools used widely by street vendors, cafes, and at outdoor events. They provide essential shade while offering 360-degree brand visibility, ensuring your logo is seen by both crowds and overhead buildings.',
+      headline: 'Promotional Umbrella',
+      fullDescription: "Promotional umbrellas combine everyday utility with powerful brand visibility. Perfect for outdoor promotions, cafés, resorts, events, exhibitions, and retail spaces, branded umbrellas keep your business visible while providing practical value. Made with durable materials and vibrant custom printing, promotional umbrellas create repeated brand exposure wherever they are used, making them an effective long-term marketing investment. Protect your customers from the weather while keeping your brand in the spotlight.",
       benefits: [
         'Functional utility ensures high usage',
         'Excellent visibility in crowded outdoor areas',
@@ -115,10 +115,10 @@ export const advertisingServicesData = [
     id: 'no-parking-board',
     title: 'No Parking Board',
     shortDescription: 'Utility branding for local businesses.',
-    image: '/advertising/no-parking-board.png',
+    image: '/advertising/no-parking-board.jpeg',
     content: {
-      headline: 'Targeted Local Reach with No Parking Boards',
-      fullDescription: 'No Parking Boards attached to residential and commercial gates offer one of the most effective and affordable ways to target specific neighborhoods. Because they serve a civic utility, they are retained for long periods, providing continuous, hyper-local brand exposure.',
+      headline: 'No Parking Boards',
+      fullDescription: "No Parking Boards are more than just utility signage—they are an effective branding tool for businesses, residential societies, hospitals, educational institutions, and commercial spaces. Custom-branded boards not only communicate important parking instructions but also reinforce your brand identity every day. Manufactured using durable, weather-resistant materials with high-quality printing, our boards ensure long-lasting visibility while maintaining a professional appearance. They help improve space management while providing continuous local brand exposure. Keep your spaces organized while keeping your brand visible, trusted, and remembered.",
       benefits: [
         'Pinpoint neighborhood targeting',
         'High retention rate due to utility',
@@ -131,10 +131,10 @@ export const advertisingServicesData = [
     id: 'metro-branding',
     title: 'Metro Branding',
     shortDescription: 'High-footfall metro station advertising.',
-    image: '/advertising/metro-branding.png',
+    image: '/advertising/metro-branding.jpeg',
     content: {
-      headline: 'Capture the Commuter Rush with Metro Branding',
-      fullDescription: 'Metro network advertising—both inside the trains and across stations—guarantees exposure to millions of daily commuters. With high dwell times on platforms and inside coaches, metro branding allows for detailed messaging and deep audience engagement.',
+      headline: 'Metro Branding',
+      fullDescription: "Metro branding offers unmatched visibility by connecting your business with thousands of daily commuters. Advertising opportunities inside trains, stations, pillars, escalators, and digital displays help your brand remain visible throughout every journey. Metro advertising combines high-frequency exposure with a diverse audience, making it one of the most effective mediums for building awareness and increasing brand recall. Reach your audience every day with branding that moves alongside the city.",
       benefits: [
         'Guaranteed massive daily footfall',
         'High dwell times for detailed messaging',
@@ -147,10 +147,10 @@ export const advertisingServicesData = [
     id: 'train-branding',
     title: 'Train Branding',
     shortDescription: 'Long-distance transit media campaigns.',
-    image: '/advertising/train-branding.png',
+    image: '/advertising/train-branding.jpeg',
     content: {
-      headline: 'Pan-India Reach with Railway & Train Branding',
-      fullDescription: 'Train branding, covering both exterior wrapping and interior panels, offers unparalleled reach across different states and demographics. It is the ultimate transit media for brands looking to establish a massive, national or regional footprint.',
+      headline: 'Train Branding',
+      fullDescription: "Train branding transforms railway coaches into moving advertisements that travel across cities and states, delivering exceptional visibility to millions of passengers and people along railway routes. It is an ideal solution for businesses looking for large-scale brand exposure. Using premium-quality wraps and creative designs, train branding offers continuous advertising, strong brand recall, and nationwide reach at an economical cost. Put your brand on track for greater visibility, wider reach, and lasting impact.",
       benefits: [
         'Unmatched geographical reach',
         'Connects with rural, semi-urban, and urban populations',
@@ -163,10 +163,10 @@ export const advertisingServicesData = [
     id: 'mall-branding',
     title: 'Mall Branding',
     shortDescription: 'Reach shoppers through premium retail spaces.',
-    image: '/advertising/mall-branding.png',
+    image: '/advertising/mall-branding.jpeg',
     content: {
-      headline: 'Influence Buyers at the Point of Purchase via Mall Branding',
-      fullDescription: 'Mall branding places your message directly in front of consumers in a relaxed, buying-ready state of mind. From atrium drops and escalator branding to digital screens, mall advertising is highly effective for lifestyle, fashion, tech, and entertainment brands.',
+      headline: 'Mall Branding',
+      fullDescription: "Mall branding places your business in one of the busiest shopping destinations, where thousands of potential customers visit every day. From atriums and escalators to digital screens, kiosks, floor graphics, and hanging banners, mall advertising offers multiple touchpoints to engage shoppers throughout their visit. With high dwell time and a premium audience, mall branding helps businesses increase visibility, strengthen brand recall, and influence purchasing decisions. We provide creative, end-to-end branding solutions that turn shopping spaces into powerful marketing platforms. Reach customers where they shop, explore, and make buying decisions.",
       benefits: [
         'Targets consumers in a spending mindset',
         'Premium, climate-controlled environments',
@@ -179,10 +179,10 @@ export const advertisingServicesData = [
     id: 'cinema-advertising',
     title: 'Cinema Advertising',
     shortDescription: 'Big-screen brand engagement before movies.',
-    image: '/advertising/cinema-advertising.png',
+    image: '/advertising/cinema-advertising.jpeg',
     content: {
-      headline: 'Captivate Audiences with Big Screen Cinema Advertising',
-      fullDescription: 'Cinema advertising provides a 100% captive audience in a distraction-free, immersive environment. Your brand message is delivered on a massive screen with high-definition audio, ensuring absolute focus and high emotional resonance just before the blockbuster begins.',
+      headline: 'Cinema Advertising',
+      fullDescription: "Cinema advertising gives your brand the undivided attention of a highly engaged audience on the big screen. Displayed before movie screenings and during intervals, cinema ads create a memorable visual and audio experience that leaves a lasting impression. Ideal for product launches, brand awareness campaigns, and local promotions, cinema advertising offers excellent recall in a distraction-free environment. Our creative solutions ensure your message captivates audiences and drives stronger engagement. Put your brand on the big screen and make every impression unforgettable.",
       benefits: [
         'Undivided audience attention',
         'Larger-than-life audio-visual impact',
@@ -195,10 +195,10 @@ export const advertisingServicesData = [
     id: 'pole-kiosk-branding',
     title: 'Pole Kiosk Branding',
     shortDescription: 'Roadside branding for local visibility.',
-    image: '/advertising/pole-kiosk-branding.png',
+    image: '/advertising/pole-kiosk-branding.jpeg',
     content: {
-      headline: 'Continuous Roadside Visibility with Pole Kiosks',
-      fullDescription: 'Pole kiosks are sequential ad panels mounted on streetlights along busy roads. Because they are placed consecutively, they create a powerful "storytelling" or repetition effect, ensuring your brand stays top-of-mind for drivers and pedestrians navigating the corridor.',
+      headline: 'Pole Kiosk Branding',
+      fullDescription: "Pole kiosk branding is a smart outdoor advertising solution that delivers continuous visibility in busy streets, marketplaces, intersections, and commercial zones. Positioned at eye level, these compact displays effectively capture the attention of pedestrians and motorists throughout the day. Designed for maximum impact in high-footfall locations, pole kiosk branding is an affordable and effective way to increase local awareness and strengthen brand recall. We provide customized designs, premium printing, and professional installation for lasting results. Make every street corner an opportunity to showcase your brand.",
       benefits: [
         'High-frequency repetitive exposure',
         'Eye-level visibility for motorists',
@@ -211,10 +211,10 @@ export const advertisingServicesData = [
     id: 'wall-painting-advertising',
     title: 'Wall Painting Advertising',
     shortDescription: 'Traditional advertising with long-lasting impact.',
-    image: '/advertising/wall-painting-advertising.png',
+    image: '/advertising/wall-painting-advertising.jpeg',
     content: {
-      headline: 'Deep Rural & Urban Penetration via Wall Paintings',
-      fullDescription: 'Wall painting is one of the oldest, most resilient forms of advertising in India. It is highly effective for penetrating deep rural markets and tier-2/tier-3 cities. Once painted, it offers months or even years of continuous, weatherproof brand exposure at a fraction of the cost of digital media.',
+      headline: 'Wall Painting Advertising',
+      fullDescription: "Wall painting advertising is a timeless branding solution that combines creativity with long-term visibility. Hand-painted or professionally executed wall advertisements are ideal for highways, rural markets, small towns, and urban neighborhoods, helping brands connect with audiences through a traditional yet highly effective medium. Built to withstand changing weather conditions, wall paintings deliver continuous brand exposure for years while creating strong local recognition. We offer customized designs that blend artistic appeal with impactful messaging. Turn ordinary walls into lasting advertisements that people remember every day.",
       benefits: [
         'Unrivaled deep rural market penetration',
         'Extremely long lifespan and durability',
@@ -227,10 +227,10 @@ export const advertisingServicesData = [
     id: 'btl-activation',
     title: 'BTL Activation',
     shortDescription: 'On-ground promotions and experiential marketing.',
-    image: '/advertising/btl-activation.png',
+    image: '/advertising/btl-activation.jpeg',
     content: {
-      headline: 'Direct Consumer Engagement with BTL Activations',
-      fullDescription: 'Below-The-Line (BTL) activations involve direct, on-ground interactions with your target audience. From product sampling in supermarkets to interactive roadshows, BTL creates memorable, experiential marketing moments that drive immediate consumer action and feedback.',
+      headline: 'BTL Activation',
+      fullDescription: "BTL (Below-The-Line) Activation creates direct, face-to-face interactions between your brand and your target audience through engaging on-ground experiences. From product sampling and roadshows to promotional campaigns, retail activations, and experiential marketing, BTL activities build meaningful customer connections. These personalized campaigns encourage participation, increase brand recall, generate quality leads, and drive conversions. Our experienced team manages everything from concept development to flawless execution, ensuring measurable marketing results. Bring your brand to life through experiences that inspire action and lasting loyalty.",
       benefits: [
         'Direct, two-way consumer interaction',
         'Immediate product feedback and trials',
@@ -243,10 +243,10 @@ export const advertisingServicesData = [
     id: 'event-branding',
     title: 'Event Branding',
     shortDescription: 'Corporate and promotional event branding.',
-    image: '/advertising/event-branding.png',
+    image: '/advertising/event-branding.jpeg',
     content: {
-      headline: 'Maximize Impact with Professional Event Branding',
-      fullDescription: 'Event branding ensures your corporate identity takes center stage at conferences, exhibitions, concerts, or sponsored gatherings. From stage backdrops and registration desks to customized merchandise, we create cohesive visual experiences that leave a lasting impression on attendees.',
+      headline: 'Event Branding',
+      fullDescription: "Event branding transforms ordinary events into memorable brand experiences through strategic design and impactful visual communication. Whether it's a corporate conference, product launch, exhibition, trade show, or promotional event, every branding element contributes to a consistent and professional brand presence. From stage backdrops and entrance arches to LED screens, standees, booths, banners, and promotional materials, we provide complete event branding solutions that captivate audiences and enhance brand visibility. Create unforgettable events that leave a powerful impression long after they end.",
       benefits: [
         'Creates a cohesive, professional brand atmosphere',
         'High visibility among industry peers and target demographics',
