@@ -21,10 +21,10 @@ const Footer = () => {
         setFbWidth(340);
       }
     };
-    
+
     // Initial check
     handleResize();
-    
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -78,7 +78,7 @@ const Footer = () => {
           </nav>
         </div>
         {/* Bottom Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-12">
+        <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-16 lg:gap-24 max-w-6xl mx-auto mt-8">
 
           {/* Left: Tagline & Contact Form */}
           <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -86,20 +86,28 @@ const Footer = () => {
               Step up from <span className="text-sky-400">Local to Global</span>
             </h2>
 
-            <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700 w-full max-w-lg">
-              <h4 className="text-white font-bold text-lg mb-4 text-left">Message with me</h4>
-              <div className="text-left">
+            <div className="bg-slate-900/80 backdrop-blur-xl p-8 rounded-3xl border border-slate-700/60 border-b-4 border-r-4 border-b-slate-950/60 border-r-slate-950/60 shadow-[0_15px_40px_-10px_rgba(0,0,0,0.7),inset_0_1px_1px_rgba(255,255,255,0.15)] w-full max-w-lg relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 to-transparent"></div>
+              
+              <h4 className="text-white font-black text-2xl mb-8 text-left relative z-10 flex items-center gap-3">
+                <span className="w-10 h-10 rounded-2xl bg-sky-500/20 flex items-center justify-center text-sky-400 rotate-3">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                </span>
+                Send a Message
+              </h4>
+              
+              <div className="text-left relative z-10">
                 <ContactForm theme="dark" />
               </div>
             </div>
           </div>
 
           {/* Right: Social & Facebook Embed Placeholder */}
-          <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-end text-center lg:text-right">
+          <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left lg:pl-12">
 
             <h4 className="text-white font-bold text-lg md:text-xl mb-4 md:mb-6">Connect With Us</h4>
             {/* Social Icons */}
-            <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8">
+            <div className="flex flex-wrap justify-start gap-3 md:gap-4 mb-8">
               <a href="https://www.facebook.com/primetimeresearch" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white hover:-translate-y-1 transition-transform">
                 <FacebookIcon />
               </a>
@@ -118,7 +126,7 @@ const Footer = () => {
             </div>
 
             {/* Facebook Page Widget */}
-            <div className="flex w-full max-w-[340px] bg-white rounded-lg overflow-hidden shadow-lg justify-center mx-auto lg:ml-auto lg:mr-0">
+            <div className="flex w-full max-w-[340px] bg-white rounded-lg overflow-hidden shadow-lg justify-center mx-auto lg:mx-0">
               <iframe
                 key={fbWidth}
                 src={`https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprimetimeresearch&tabs=timeline%2Cevents%2Cmessages&width=${fbWidth}&height=450&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&locale=en_US`}

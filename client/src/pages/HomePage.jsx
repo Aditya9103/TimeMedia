@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import PageContainer from '../components/layout/PageContainer';
 import ServicesMarquee from '../components/home/ServicesMarquee';
-import HeroVideo from '../components/home/HeroVideo';
+import HeroSection from '../components/home/HeroSection';
 import HomeFaqSection from '../components/home/HomeFaqSection';
 import ServicesGrid from '../components/home/ServicesGrid';
 import AdvertisingServicesGrid from '../components/home/AdvertisingServicesGrid';
@@ -52,7 +52,7 @@ const HomePage = () => {
         title="Prime Time Research Media | Top PR, Awards & Market Research India"
         description="Prime Time Research Media provides top PR, market research, and business consultancy in India, hosting prestigious national & international award summits."
       />
-      <HeroVideo />
+      <HeroSection />
       <PageContainer className="flex flex-col w-full overflow-hidden">
         <SectionWrapper><BrandDivider /></SectionWrapper>
         <SectionWrapper><ClientLogosStrip /></SectionWrapper>

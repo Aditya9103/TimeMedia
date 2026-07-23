@@ -24,6 +24,7 @@ const awardEventSchema = new mongoose.Schema(
       url: String,
       alt: String,
     },
+    shortDescription: String,
     narrativeHtml: String,
     galleryImages: [
       {
@@ -57,6 +58,10 @@ const awardEventSchema = new mongoose.Schema(
     openForNomination: {
       type: Boolean,
       default: false,
+    },
+    order: {
+      type: Number,
+      default: 0,
     },
     seo: {
       metaTitle: String,

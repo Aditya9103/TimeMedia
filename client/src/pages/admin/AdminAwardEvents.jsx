@@ -35,7 +35,7 @@ const AdminAwardEvents = () => {
   // Form State
   const [formData, setFormData] = useState({
     title: '', year: '', chiefGuest: '', eventDate: '', venue: '',
-    narrativeHtml: '', status: 'upcoming', openForNomination: false
+    shortDescription: '', narrativeHtml: '', status: 'upcoming', openForNomination: false, order: 0
   });
 
   const [heroImageFile, setHeroImageFile] = useState(null);
@@ -62,9 +62,11 @@ const AdminAwardEvents = () => {
         chiefGuest: ev.chiefGuest || '',
         eventDate: ev.eventDate ? ev.eventDate.split('T')[0] : '',
         venue: ev.venue || '',
+        shortDescription: ev.shortDescription || '',
         narrativeHtml: ev.narrativeHtml || '',
         status: ev.status || 'upcoming',
-        openForNomination: ev.openForNomination || false
+        openForNomination: ev.openForNomination || false,
+        order: ev.order || 0
       });
       setVideoGalleryInput(ev.videoGallery?.map(v => v.url).join(', ') || '');
       setExistingHero(ev.heroImage?.url || null);
@@ -73,7 +75,7 @@ const AdminAwardEvents = () => {
       setEditingEvent(null);
       setFormData({
         title: '', year: '', chiefGuest: '', eventDate: '', venue: '',
-        narrativeHtml: '', status: 'upcoming', openForNomination: false
+        shortDescription: '', narrativeHtml: '', status: 'upcoming', openForNomination: false, order: 0
       });
       setVideoGalleryInput('');
       setExistingHero(null);
@@ -170,7 +172,12 @@ const AdminAwardEvents = () => {
               </div>
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-1.5">Year *</label>
-                <input required className={inputClass} value={formData.year} onChange={e => setFormData({ ...formData, year: e.target.value })} placeholder="e.g. 2026" />
+                <div className="flex gap-4">
+                  <input required className={inputClass} value={formData.year} onChange={e => setFormData({ ...formData, year: e.target.value })} placeholder="e.g. 2026" />
+                  <div className="w-1/3">
+                    <input type="number" className={inputClass} value={formData.order} onChange={e => setFormData({ ...formData, order: Number(e.target.value) })} placeholder="Order" title="Display Order" />
+                  </div>
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-1.5">Status</label>
@@ -201,9 +208,15 @@ const AdminAwardEvents = () => {
           </div>
 
           {/* Description */}
-          <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-            <label className="block text-sm font-semibold text-slate-700 mb-1.5">Event Description (HTML allowed)</label>
-            <textarea className={`${inputClass} min-h-[120px]`} value={formData.narrativeHtml} onChange={e => setFormData({ ...formData, narrativeHtml: e.target.value })} placeholder="Describe the event..." />
+          <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Short Event Description (Hero Banner)</label>
+              <textarea className={`${inputClass} min-h-[80px]`} value={formData.shortDescription} onChange={e => setFormData({ ...formData, shortDescription: e.target.value })} placeholder="Brief summary for the top banner..." />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Detail Event Description (HTML allowed)</label>
+              <textarea className={`${inputClass} min-h-[120px]`} value={formData.narrativeHtml} onChange={e => setFormData({ ...formData, narrativeHtml: e.target.value })} placeholder="Describe the event..." />
+            </div>
           </div>
 
           {/* Media Section */}
@@ -349,6 +362,7 @@ const AdminAwardEvents = () => {
             <table className="w-full text-left text-sm text-slate-600">
               <thead className="bg-slate-50 text-slate-700 font-semibold border-b border-slate-200">
                 <tr>
+                  <th className="px-6 py-4">Order</th>
                   <th className="px-6 py-4">Event Details</th>
                   <th className="px-6 py-4">Date & Venue</th>
                   <th className="px-6 py-4">Status</th>
@@ -358,6 +372,7 @@ const AdminAwardEvents = () => {
               <tbody className="divide-y divide-slate-100">
                 {events.map((ev) => (
                   <tr key={ev._id} className="hover:bg-slate-50 transition-colors">
+                    <td className="px-6 py-4 font-medium text-slate-700 text-base">{ev.order || 0}</td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
@@ -398,7 +413,7 @@ const AdminAwardEvents = () => {
                 ))}
                 {events.length === 0 && (
                   <tr>
-                    <td colSpan="4" className="px-6 py-12 text-center">
+                    <td colSpan="5" className="px-6 py-12 text-center">
                       <p className="text-slate-500 text-base font-medium">No events found in this category.</p>
                       <button onClick={() => handleOpenModal()} className="mt-4 text-blue-600 hover:underline font-medium">Create the first event</button>
                     </td>

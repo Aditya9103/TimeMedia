@@ -15,11 +15,23 @@ const STATUS_OPTIONS = [
   'REJECTED'
 ];
 
+const AWARD_OPTIONS = [
+  'ALL AWARDS',
+  'International Awards',
+  'Global Education Awards',
+  'Global Healthcare Awards',
+  'Digital Bharat Summit',
+  'Global Icon Awards',
+  'India Excellence Awards',
+  'National Dental Awards'
+];
+
 export default function NominationSubmissions() {
   const { adminInfo } = useSelector((state) => state.auth);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('ALL STATUSES');
   const [paymentFilter, setPaymentFilter] = useState('ALL PAYMENTS');
+  const [awardFilter, setAwardFilter] = useState('ALL AWARDS');
   const [updatingId, setUpdatingId] = useState(null);
 
   // Modal states
@@ -33,7 +45,8 @@ export default function NominationSubmissions() {
   const queryParams = {
     search: searchTerm,
     status: statusFilter !== 'ALL STATUSES' ? statusFilter : undefined,
-    paymentStatus: paymentFilter !== 'ALL PAYMENTS' ? paymentFilter : undefined
+    paymentStatus: paymentFilter !== 'ALL PAYMENTS' ? paymentFilter : undefined,
+    awardName: awardFilter !== 'ALL AWARDS' ? awardFilter : undefined
   };
 
   const { data: response, isLoading, error } = useGetNominationsQuery(queryParams);
@@ -388,6 +401,17 @@ export default function NominationSubmissions() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+        </div>
+        <div className="w-full md:w-64">
+          <select
+            className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 text-sm font-bold uppercase tracking-widest text-slate-700 cursor-pointer"
+            value={awardFilter}
+            onChange={(e) => setAwardFilter(e.target.value)}
+          >
+            {AWARD_OPTIONS.map(a => (
+              <option key={a} value={a}>{a}</option>
+            ))}
+          </select>
         </div>
         <div className="w-full md:w-64">
           <select

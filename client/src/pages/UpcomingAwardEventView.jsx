@@ -4,17 +4,72 @@ import PageContainer from '../components/layout/PageContainer';
 import { Helmet } from 'react-helmet-async';
 import { MapPin, Calendar, User, ArrowRight } from 'lucide-react';
 import RelatedAwards from '../components/common/RelatedAwards';
+import UpcomingEventsSection from '../components/home/UpcomingEventsSection';
 
 const UpcomingAwardEventView = ({ event, categorySlug, relatedEvents }) => {
   return (
     <div className="bg-white min-h-screen">
       <Helmet><title>{event.title} | Prime Time Media</title></Helmet>
 
+      {/* Header Info Above Hero */}
+      <PageContainer className="pt-24 pb-8">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-6 border-b border-slate-300 mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-[42px] font-bold font-display leading-tight text-slate-900 lg:w-1/2">
+            {event.title}
+          </h1>
+
+          <div className="flex flex-row flex-wrap md:flex-nowrap items-start lg:items-center gap-6 md:gap-8 lg:justify-end lg:w-1/2">
+            {event.venue && (
+              <div className="flex flex-col gap-1.5">
+                <span className="flex items-center gap-2 text-base font-bold text-slate-900">
+                  <MapPin size={18} className="text-[#15b7b9]" /> Venue :
+                </span>
+                <span className="text-sm text-slate-700">{event.venue}</span>
+              </div>
+            )}
+
+            {event.venue && event.chiefGuest && (
+              <div className="hidden md:block w-px h-12 bg-slate-200"></div>
+            )}
+
+            {event.chiefGuest && (
+              <div className="flex flex-col gap-1.5">
+                <span className="flex items-center gap-2 text-base font-bold text-slate-900">
+                  <User size={18} className="text-[#15b7b9]" /> Chief Guest :
+                </span>
+                <span className="text-sm text-slate-700">{event.chiefGuest}</span>
+              </div>
+            )}
+
+            {(event.venue || event.chiefGuest) && event.eventDate && (
+              <div className="hidden md:block w-px h-12 bg-slate-200"></div>
+            )}
+
+            {event.eventDate && (
+              <div className="flex flex-col gap-1.5">
+                <span className="flex items-center gap-2 text-base font-bold text-slate-900">
+                  <Calendar size={18} className="text-[#15b7b9]" /> Date :
+                </span>
+                <span className="text-sm text-slate-700">
+                  {new Date(event.eventDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {event.shortDescription && (
+          <p className="text-lg text-slate-700 w-full leading-relaxed mb-4">{event.shortDescription}</p>
+        )}
+      </PageContainer>
+
       {/* Hero Section */}
       {event.heroImage?.url && (
-        <div className="w-full h-64 md:h-96 bg-slate-100">
-          <img src={event.heroImage.url} alt={event.heroImage.alt || event.title} className="w-full h-full object-cover" />
-        </div>
+        <PageContainer>
+          <div className="w-full bg-slate-100 rounded-2xl overflow-hidden shadow-sm border border-slate-200">
+            <img src={event.heroImage.url} alt={event.heroImage.alt || event.title} className="w-full h-auto" />
+          </div>
+        </PageContainer>
       )}
 
       {/* Content Section */}
@@ -90,6 +145,8 @@ const UpcomingAwardEventView = ({ event, categorySlug, relatedEvents }) => {
 
         {/* Section: Related Awards */}
         <RelatedAwards relatedEvents={relatedEvents} categorySlug={categorySlug} />
+        <UpcomingEventsSection />
+
 
       </PageContainer>
     </div>

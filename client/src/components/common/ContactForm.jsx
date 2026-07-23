@@ -10,7 +10,7 @@ const ContactForm = ({ theme = 'light' }) => {
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
 
   const inputStyles = isDark
-    ? "w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-400 transition-colors"
+    ? "w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl px-5 py-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/50 focus:bg-slate-900/80 transition-all shadow-inner"
     : "w-full px-4 py-3 rounded-lg border border-gray-200 text-gray-900 focus:border-sky-500 focus:ring-2 focus:ring-sky-200 outline-none transition-all";
 
   const labelStyles = isDark ? "text-sm font-semibold text-gray-300" : "text-sm font-semibold text-gray-700";
@@ -111,7 +111,7 @@ const ContactForm = ({ theme = 'light' }) => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className={`mt-2 ${isDark ? 'w-full py-3 rounded-lg' : 'w-full md:w-auto self-start py-4 px-10 rounded-full'} bg-sky-600 hover:bg-sky-700 text-white font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-70 disabled:cursor-not-allowed ${!isDark && !isSubmitting ? 'hover:-translate-y-1' : ''}`}
+        className={`mt-4 ${isDark ? 'w-full py-4 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 shadow-lg shadow-sky-500/25' : 'w-full md:w-auto self-start py-4 px-10 rounded-full bg-sky-600 hover:bg-sky-700'} text-white font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-70 disabled:cursor-not-allowed ${!isSubmitting ? 'hover:-translate-y-1' : ''}`}
       >
         {isSubmitting ? (
           <Loader2 size={20} className="animate-spin" />

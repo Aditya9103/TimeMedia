@@ -89,7 +89,7 @@ export const submitNomination = async (req, res) => {
 // @access  Private/Admin
 export const getNominations = async (req, res) => {
   try {
-    const { search, status, paymentStatus } = req.query;
+    const { search, status, paymentStatus, awardName } = req.query;
     
     // Build query object
     let query = {};
@@ -100,6 +100,10 @@ export const getNominations = async (req, res) => {
 
     if (paymentStatus && paymentStatus !== 'ALL PAYMENTS') {
       query.paymentStatus = paymentStatus;
+    }
+
+    if (awardName && awardName !== 'ALL AWARDS') {
+      query.awardName = awardName;
     }
 
     if (search) {

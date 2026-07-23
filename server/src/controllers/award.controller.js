@@ -61,7 +61,7 @@ export const getAwardEvents = async (req, res) => {
       const category = await AwardCategory.findOne({ slug: req.query.category });
       if (category) filter.category = category._id;
     }
-    const events = await AwardEvent.find(filter).populate('category').sort({ eventDate: -1 });
+    const events = await AwardEvent.find(filter).populate('category').sort({ order: 1, eventDate: -1 });
     res.status(200).json({ success: true, data: events });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

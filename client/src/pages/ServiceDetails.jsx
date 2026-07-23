@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useLocation, useParams, Navigate } from 'react-router-dom';
 import PageContainer from '../components/layout/PageContainer';
 import { servicesData } from '../data/servicesData';
+import { getServiceSEO, buildServiceSchema } from '../data/serviceseodata';
 import ServiceHero from '../components/services/ServiceHero';
 import ServiceBenefits from '../components/services/ServiceBenefits';
 import ServiceWhyUs from '../components/services/ServiceWhyUs';
@@ -13,6 +14,7 @@ import SEO from '../components/common/SEO';
 
 export default function ServiceDetails() {
   const { serviceId } = useParams();
+  const location = useLocation();
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -45,27 +47,17 @@ export default function ServiceDetails() {
     return <div className="min-h-screen pt-32 text-center text-slate-500">Service not found.</div>;
   }
 
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": data.title,
-    "name": data.hero.title,
-    "description": data.hero.description.substring(0, 200) + "...",
-    "provider": {
-      "@type": "Organization",
-      "name": "Prime Time Research Media",
-      "url": "https://timemedia.in"
-    },
-    "image": data.hero.image ? `https://timemedia.in${data.hero.image}` : "https://timemedia.in/og-image.jpg"
-  };
+  const seoData = getServiceSEO(serviceId);
+  const schemas = buildServiceSchema(data, seoData, location.pathname);
 
   return (
     <PageContainer as="main" className="min-h-screen  font-sans">
-      <SEO 
-        title={data.hero.title}
-        description={data.hero.description.substring(0, 150) + "..."}
-        image={data.hero.image ? `https://timemedia.in${data.hero.image}` : undefined}
-        schema={serviceSchema}
+      <SEO
+        title={seoData.metaTitle}
+        description={seoData.metaDescription}
+        keywords={seoData.keywords.join(', ')}
+        image={data.hero && data.hero.image ? `https://timemedia.in${data.hero.image}` : undefined}
+        schema={schemas}
       />
       {/* Section 1: Hero */}
       <ServiceHero data={data.hero} />
